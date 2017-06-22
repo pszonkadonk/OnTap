@@ -408,6 +408,7 @@
 				757811761EF9FF6900D102AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		757811771EF9FF6900D102AB /* Build configuration list for PBXNativeTarget "OnTapTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +417,7 @@
 				757811791EF9FF6900D102AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
