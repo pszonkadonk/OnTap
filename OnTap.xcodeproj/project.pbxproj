@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750689E91EFF072E0059C77B /* BreweryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */; };
+		750689EB1EFF079C0059C77B /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689EA1EFF079C0059C77B /* Brewery.swift */; };
 		7578115B1EF9FF6800D102AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115A1EF9FF6800D102AB /* AppDelegate.swift */; };
 		7578115D1EF9FF6800D102AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115C1EF9FF6800D102AB /* ViewController.swift */; };
 		757811601EF9FF6800D102AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7578115E1EF9FF6800D102AB /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryDetailViewController.swift; sourceTree = "<group>"; };
+		750689EA1EFF079C0059C77B /* Brewery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 		757811571EF9FF6800D102AB /* OnTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7578115A1EF9FF6800D102AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7578115C1EF9FF6800D102AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				757811631EF9FF6800D102AB /* LaunchScreen.storyboard */,
 				757811661EF9FF6800D102AB /* Info.plist */,
 				75D3469D1EFDF70400E446C9 /* BreweryListTableViewController.swift */,
+				750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */,
+				750689EA1EFF079C0059C77B /* Brewery.swift */,
 			);
 			path = OnTap;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 			files = (
 				7578115D1EF9FF6800D102AB /* ViewController.swift in Sources */,
 				7578115B1EF9FF6800D102AB /* AppDelegate.swift in Sources */,
+				750689E91EFF072E0059C77B /* BreweryDetailViewController.swift in Sources */,
+				750689EB1EFF079C0059C77B /* Brewery.swift in Sources */,
 				75D3469E1EFDF70400E446C9 /* BreweryListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

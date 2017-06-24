@@ -11,63 +11,43 @@ import UIKit
 class BreweryListTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var breweryTableView: UITableView!
-    
-    
-    
-    
-    
+
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var fetchedBrewery = [Brewery]()
+    var filteredBrewery = [Brewery]()
     var breweryPageNumber: Int = 1
-    
+    var isSearching: Bool = false
+
     
 
     override func viewDidLoad() {
         
-        super.viewDidLoad()
         
         breweryTableView.dataSource = self
+        breweryTableView.delegate = self
         
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
         
         parseBreweries()
-        searchBar()
+        
+        super.viewDidLoad()
 
-        // Uncomment the following line to preserve sel ection between presentations
+        // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    func searchBar() {
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
-        searchBar.delegate = self
-        searchBar.showsScopeBar = true
-        searchBar.tintColor = UIColor.lightGray
-        searchBar.scopeButtonTitles = ["Brewer Name"]
-        self.breweryTableView.tableHeaderView = searchBar
+    
+    func filterTableView(text: String) {
+        self.fetchedBrewery = fetchedBrewery.filter({(brewery) -> Bool in
+            return brewery.name.lowercased().contains(text)
+        })
     }
     
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.fetchedBrewery = []
-        parseBreweries()
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            self.breweryPageNumber = 1
-            self.fetchedBrewery = []
-            parseBreweries()
-            
-        }
-        else if(searchBar.selectedScopeButtonIndex == 0) {
-            fetchedBrewery = fetchedBrewery.filter({(brewery) -> Bool in
-                return brewery.name.lowercased().contains(searchText.lowercased())
-            })
-        }
-        self.breweryTableView.reloadData()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -83,14 +63,17 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if isSearching {
+            return filteredBrewery.count
+        }
         // #warning Incomplete implementation, return the number of rows
         return fetchedBrewery.count
     }
     
-    func parseBreweries() {
-        
+    func parseBreweries(page:Int=1) {
+
         guard let url = URL(string: "http://api.brewerydb.com/v2/breweries/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.breweryPageNumber)")
-            else {return}
+            else {return }
 
         let session = URLSession.shared
         session.dataTask(with: url) {(data, response, error) in
@@ -101,18 +84,21 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
                     if let breweries = json["data"] as? [[String:Any]] {
                         for brewery in breweries {
-                            if let breweryName = brewery["name"] as? String {
-                                var newBrewery = Brewery(name: breweryName)
-                                self.fetchedBrewery.append(newBrewery)
+                            if let breweryId = brewery["id"] as? String {
+                                if let breweryName = brewery["name"] as? String {
+                                    var newBrewery = Brewery(id:breweryId, name: breweryName)
+                                    self.fetchedBrewery.append(newBrewery)
+                                }
                             }
                         }
                     }
+
                 }
-                self.breweryTableView.reloadData()
-                self.breweryPageNumber += 1
             } catch {
                 print(error)
             }
+        self.breweryTableView.reloadData()
+        self.breweryPageNumber += 1
         }
     }.resume()
 }
@@ -121,12 +107,30 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView,  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = breweryTableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
-        
-        
-        cell.textLabel?.text = fetchedBrewery[indexPath.row].name
-         
+            let text: String!
+            
+            if isSearching {
+                text = filteredBrewery[indexPath.row].name
+            } else {
+                text = self.fetchedBrewery[indexPath.row].name
+            }
+        cell.textLabel?.text = text
 
         return cell
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("hey the text changed")
+        if searchBar.text == nil || searchBar.text == "" {
+            isSearching = false
+            view.endEditing(true)
+            self.breweryTableView.reloadData()
+        } else {
+            filteredBrewery = fetchedBrewery.filter({return $0.name == searchBar.text!})
+            
+            self.isSearching = true
+            
+            breweryTableView.reloadData()
+        }
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -137,7 +141,6 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
                 if !isLoadingNewData {
                     isLoadingNewData = true
                     parseBreweries()
-                    
                 }
             }
         }
@@ -187,29 +190,26 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "breweryDetailSegue",
+            let destination = segue.destination as? BreweryDetailViewController,
+            let breweryIndex = self.breweryTableView.indexPathForSelectedRow?.row
+        {
+            destination.breweryId = self.fetchedBrewery[breweryIndex].id
+            destination.breweryName = self.fetchedBrewery[breweryIndex].name
+        }
+        
     }
-    */
+
 
 }
 
 
-class Brewery {
-    var name: String
-    
-    init() {
-        self.name = ""
-    }
-    init(name: String) {
-        self.name = name
-    }
-}
+
+
 
 
 
