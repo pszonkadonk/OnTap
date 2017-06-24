@@ -14,10 +14,16 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
     
     
     
+    
+    
+    
     var fetchedBrewery = [Brewery]()
+    var breweryPageNumber: Int = 1
+    
     
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         breweryTableView.dataSource = self
@@ -42,16 +48,24 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         self.breweryTableView.tableHeaderView = searchBar
     }
     
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.fetchedBrewery = []
+        parseBreweries()
+    }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
+            self.breweryPageNumber = 1
+            self.fetchedBrewery = []
             parseBreweries()
+            
         }
         else if(searchBar.selectedScopeButtonIndex == 0) {
             fetchedBrewery = fetchedBrewery.filter({(brewery) -> Bool in
                 return brewery.name.lowercased().contains(searchText.lowercased())
             })
         }
-        
         self.breweryTableView.reloadData()
     }
 
@@ -75,9 +89,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
     
     func parseBreweries() {
         
-        fetchedBrewery = []
-        
-        guard let url = URL(string: "http://api.brewerydb.com/v2/breweries/?key=6ac28fb2b6b8ea4081184e492e5462d8")
+        guard let url = URL(string: "http://api.brewerydb.com/v2/breweries/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.breweryPageNumber)")
             else {return}
 
         let session = URLSession.shared
@@ -97,6 +109,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
                     }
                 }
                 self.breweryTableView.reloadData()
+                self.breweryPageNumber += 1
             } catch {
                 print(error)
             }
@@ -108,13 +121,36 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView,  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = breweryTableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
-
+        
+        
         cell.textLabel?.text = fetchedBrewery[indexPath.row].name
          
 
         return cell
     }
     
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        var isLoadingNewData: Bool = false
+        
+        if scrollView == breweryTableView {
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+                if !isLoadingNewData {
+                    isLoadingNewData = true
+                    parseBreweries()
+                    
+                }
+            }
+        }
+    }
+    
+    
+//    override func tableView(_ tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        let lastElement = breweryTableView.dataSource - 1
+//        if indexPath.row == lastElement {
+//            
+//        }
+//    }
+//    
 
     /*
     // Override to support conditional editing of the table view.

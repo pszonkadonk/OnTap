@@ -42,6 +42,22 @@
                                             <segue destination="ego-Kf-Mzl" kind="show" id="Ibh-0x-72E"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8n-Bf-54b">
+                                        <rect key="frame" x="34" y="126" width="93" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Beers">
+                                            <color key="titleColor" red="1" green="0.26969944899999998" blue="0.54194996969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su8-EN-y1b">
+                                        <rect key="frame" x="34" y="210" width="93" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Events">
+                                            <color key="titleColor" red="1" green="0.26969944899999998" blue="0.54194996969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79730497941060452" green="1" blue="0.94877451022811621" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
