@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BreweryListTableViewController: UITableViewController {
+class BreweryListTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var breweryTableView: UITableView!
     
@@ -24,12 +24,35 @@ class BreweryListTableViewController: UITableViewController {
         
         
         parseBreweries()
+        searchBar()
 
-        // Uncomment the following line to preserve selection between presentations
+        // Uncomment the following line to preserve sel ection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func searchBar() {
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        searchBar.delegate = self
+        searchBar.showsScopeBar = true
+        searchBar.tintColor = UIColor.lightGray
+        searchBar.scopeButtonTitles = ["Brewer Name"]
+        self.breweryTableView.tableHeaderView = searchBar
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            parseBreweries()
+        }
+        else if(searchBar.selectedScopeButtonIndex == 0) {
+            fetchedBrewery = fetchedBrewery.filter({(brewery) -> Bool in
+                return brewery.name.lowercased().contains(searchText.lowercased())
+            })
+        }
+        
+        self.breweryTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
