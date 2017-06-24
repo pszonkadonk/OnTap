@@ -39,7 +39,7 @@
                                             <color key="titleColor" red="1" green="0.26969944895227393" blue="0.54194996969821951" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="RzY-NM-x5Q" kind="show" id="1ih-Qw-rHN"/>
+                                            <segue destination="ego-Kf-Mzl" kind="show" id="Ibh-0x-72E"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,32 +82,45 @@
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="K8R-MQ-bH1">
+        <!--Brewery List Table View Controller-->
+        <scene sceneID="fVO-C5-crg">
             <objects>
-                <viewController id="RzY-NM-x5Q" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oU2-gH-hbQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wsi-As-GUg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rhF-SB-bLi">
+                <tableViewController id="ego-Kf-Mzl" customClass="BreweryListTableViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hBQ-y9-wJB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Breweries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4l-Nl-DC7">
-                                <rect key="frame" x="49" y="61" width="276" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.088985314610000005" green="0.40891328290000001" blue="0.50563202709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fnC-8h-2fT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="breweryCell" textLabel="AYH-uy-uhW" style="IBUITableViewCellStyleDefault" id="cWP-PU-pgy">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cWP-PU-pgy" id="9ge-Wt-4t8">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AYH-uy-uhW">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ego-Kf-Mzl" id="ki0-RD-btV"/>
+                            <outlet property="delegate" destination="ego-Kf-Mzl" id="8Ib-7z-BB4"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="breweryTableView" destination="hBQ-y9-wJB" id="l6b-wo-TId"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iMd-O4-dbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895" y="139"/>
+            <point key="canvasLocation" x="1930" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rRp-aZ-m2T">

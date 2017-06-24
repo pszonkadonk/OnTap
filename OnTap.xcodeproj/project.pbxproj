@@ -13,6 +13,7 @@
 		757811621EF9FF6800D102AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 757811611EF9FF6800D102AB /* Assets.xcassets */; };
 		757811651EF9FF6800D102AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757811631EF9FF6800D102AB /* LaunchScreen.storyboard */; };
 		757811701EF9FF6900D102AB /* OnTapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578116F1EF9FF6900D102AB /* OnTapTests.swift */; };
+		75D3469E1EFDF70400E446C9 /* BreweryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3469D1EFDF70400E446C9 /* BreweryListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		7578116B1EF9FF6900D102AB /* OnTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7578116F1EF9FF6900D102AB /* OnTapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTapTests.swift; sourceTree = "<group>"; };
 		757811711EF9FF6900D102AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75D3469D1EFDF70400E446C9 /* BreweryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				757811611EF9FF6800D102AB /* Assets.xcassets */,
 				757811631EF9FF6800D102AB /* LaunchScreen.storyboard */,
 				757811661EF9FF6800D102AB /* Info.plist */,
+				75D3469D1EFDF70400E446C9 /* BreweryListTableViewController.swift */,
 			);
 			path = OnTap;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				7578115D1EF9FF6800D102AB /* ViewController.swift in Sources */,
 				7578115B1EF9FF6800D102AB /* AppDelegate.swift in Sources */,
+				75D3469E1EFDF70400E446C9 /* BreweryListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
