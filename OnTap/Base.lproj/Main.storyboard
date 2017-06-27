@@ -162,12 +162,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brewery Website" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEo-VN-ldm">
+                                <rect key="frame" x="51" y="346" width="272" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="BreweryDetailView" destination="cuk-4f-eE6" id="gtc-Ru-1YA"/>
+                        <outlet property="breweryDetailView" destination="cuk-4f-eE6" id="n4Q-Qi-HyX"/>
                         <outlet property="breweryIdLabel" destination="KkC-71-cNJ" id="45S-XH-Hev"/>
                         <outlet property="breweryNameLabel" destination="tnK-YM-Wph" id="fdI-Yc-3CH"/>
+                        <outlet property="breweryWebsiteLabel" destination="oEo-VN-ldm" id="GiU-6H-JGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Euf-hI-fbt" userLabel="First Responder" sceneMemberID="firstResponder"/>

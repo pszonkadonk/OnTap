@@ -79,7 +79,6 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         session.dataTask(with: url) {(data, response, error) in
 
         if let data = data {
-            print(data)
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
                     if let breweries = json["data"] as? [[String:Any]] {
@@ -119,7 +118,6 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         return cell
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("hey the text changed")
         if searchBar.text == nil || searchBar.text == "" {
             isSearching = false
             view.endEditing(true)
@@ -203,8 +201,6 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         }
         
     }
-
-
 }
 
 
