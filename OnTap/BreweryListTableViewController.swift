@@ -197,7 +197,6 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
             let breweryIndex = self.breweryTableView.indexPathForSelectedRow?.row
         {
             destination.breweryId = self.fetchedBrewery[breweryIndex].id
-            destination.breweryName = self.fetchedBrewery[breweryIndex].name
         }
         
     }

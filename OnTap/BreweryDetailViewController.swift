@@ -10,61 +10,64 @@ import UIKit
 
 class BreweryDetailViewController: UIViewController {
 
-    @IBOutlet weak var breweryNameLabel: UILabel!
-    @IBOutlet weak var breweryIdLabel: UILabel!
     @IBOutlet weak var breweryDetailView: UIView!
-    @IBOutlet weak var breweryWebsiteLabel: UILabel!
-
-    var breweryDetail: [String:Any] = [:]
-    var breweryName: String = ""
-    var breweryId: String = ""
-    var breweryWebsite: String = ""
-    var breweryData: [String:Any] = [:]
+    @IBOutlet weak var breweryIdLabel: UILabel!
+    @IBOutlet weak var breweryNameLabel: UILabel!
+    @IBOutlet weak var breweryDescriptionLabel: UILabel!
     
+    var breweryId: String = ""
+    var breweryName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.breweryDetail = parseBrewery(breweryId: self.breweryId)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        parseBrewery(breweryId: breweryId)
     }
     
     
     
-    func parseBrewery(breweryId: String) -> [String:Any] {
-        let brewery:[String:Any] = [:]
-        guard let url = URL(string: "http://api.brewerydb.com/v2/brewery/\(breweryId)/?key=6ac28fb2b6b8ea4081184e492e5462d8" )
-            else {return brewery}
+    func parseBrewery(breweryId: String) {
+        let endpoint  = "http://api.brewerydb.com/v2/brewery/\(breweryId)/?key=6ac28fb2b6b8ea4081184e492e5462d8"
+        print("This is endpoint")
+        print(endpoint)
+        guard let url = URL(string: endpoint)
+            else {return}
         
+        let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
+        let task = session.dataTask(with: urlRequest) {(data, response, error) in
             
-        if let data = data {
-            print(data)
+        guard let data = data else {
+            print(error)
+            return
+        }
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                    let brewery = json["data"] as? [String:Any]
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
+                    print("This is not a dictionary")
+                    return
                 }
+                let breweryData: [String:Any] = json["data"] as! [String : Any]
+                if (breweryData["id"] != nil) {
+                    self.breweryIdLabel.text = breweryData["id"] as? String
+                }
+                if(breweryData["name"] != nil) {
+                    self.breweryNameLabel.text = breweryData["name"] as? String
+                }
+                if(breweryData["description"] != nil) {
+                    self.breweryDescriptionLabel.text = breweryData["description"] as? String
+                }
+                print(self.breweryIdLabel.text!)
+                print(self.breweryNameLabel.text!)
+                print(self.breweryDescriptionLabel.text!)
             } catch {
                 print(error)
             }
         }
-    }.resume()
-        return brewery
+        task.resume()
 }
     
-    
-    
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.breweryIdLabel.text = breweryId
-        self.breweryNameLabel.text = breweryName
-        self.breweryWebsiteLabel.text = breweryWebsite
-//        print(self.breweryDetail)
-//        self.breweryWebsiteLabel.text = self.breweryDetail["website"] as! String
-//        self.breweryWebsiteLabel.text = self.breweryDetail["website"] as! String
-    }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
