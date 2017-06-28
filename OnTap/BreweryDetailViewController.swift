@@ -14,6 +14,8 @@ class BreweryDetailViewController: UIViewController {
     @IBOutlet weak var breweryIdLabel: UILabel!
     @IBOutlet weak var breweryNameLabel: UILabel!
     @IBOutlet weak var breweryDescriptionLabel: UILabel!
+    @IBOutlet weak var breweryWebsiteLabel: UILabel!
+    @IBOutlet weak var breweryImageView: UIImageView!
     
     var breweryId: String = ""
     var breweryName: String = ""
@@ -58,9 +60,25 @@ class BreweryDetailViewController: UIViewController {
                 if(breweryData["description"] != nil) {
                     self.breweryDescriptionLabel.text = breweryData["description"] as? String
                 }
+                if(breweryData["website"] != nil) {
+                    self.breweryWebsiteLabel.text = breweryData["website"] as? String
+                }
+                
+                let breweryImages: [String:String] = breweryData["images"] as! [String : String]
+                
+                if(breweryImages["squareMedium"] != nil) {
+                    let imageUrl: URL = URL(string: breweryImages["squareMedium"]!)!
+                    let data = try? Data(contentsOf: imageUrl)
+                    if let imageData = data {
+                        self.breweryImageView.image = UIImage(data: data!)
+                    }
+                }
                 print(self.breweryIdLabel.text!)
                 print(self.breweryNameLabel.text!)
                 print(self.breweryDescriptionLabel.text!)
+                print(self.breweryWebsiteLabel.text!)
+                
+                
             } catch {
                 print(error)
             }

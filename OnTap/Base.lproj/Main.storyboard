@@ -163,13 +163,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="20" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpe-SF-qyo">
-                                <rect key="frame" x="29" y="326" width="317" height="310"/>
+                                <rect key="frame" x="29" y="326" width="317" height="276"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.45000000000000001"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-Bk-O2h">
+                                <rect key="frame" x="29" y="626" width="317" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lAR-ac-nRO">
+                                <rect key="frame" x="39" y="127" width="296" height="191"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -178,7 +189,9 @@
                         <outlet property="breweryDescriptionLabel" destination="Lpe-SF-qyo" id="4Wl-UG-asf"/>
                         <outlet property="breweryDetailView" destination="cuk-4f-eE6" id="ihB-OZ-mjp"/>
                         <outlet property="breweryIdLabel" destination="JCC-SR-OMH" id="EII-NY-Wpm"/>
+                        <outlet property="breweryImageView" destination="lAR-ac-nRO" id="X1B-fK-vfT"/>
                         <outlet property="breweryNameLabel" destination="39L-Ua-lT0" id="geU-gN-VF8"/>
+                        <outlet property="breweryWebsiteLabel" destination="C9o-Bk-O2h" id="WD7-qC-knQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Euf-hI-fbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
