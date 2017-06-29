@@ -83,15 +83,29 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
                     if let breweries = json["data"] as? [[String:Any]] {
                         for brewery in breweries {
+                            var newBrewery = Brewery()
                             if let breweryId = brewery["id"] as? String {
-                                if let breweryName = brewery["name"] as? String {
-                                    var newBrewery = Brewery(id:breweryId, name: breweryName)
-                                    self.fetchedBrewery.append(newBrewery)
-                                }
+                                newBrewery.id = breweryId
                             }
+                            
+                            if let breweryName = brewery["name"] as? String {
+                                newBrewery.name = breweryName
+                            }
+                            
+                            if let breweryWebsite = brewery["website"] as? String {
+                                newBrewery.website = breweryWebsite
+                            }
+                            if let breweryDescription = brewery["description"] as? String {
+                                newBrewery.description = breweryDescription
+                            }
+                            
+                            if let breweryImages = brewery["images"] as? [String:String] {
+                                var breweryImagePath = breweryImages["squareMedium"]
+                                newBrewery.imagePath = breweryImagePath!
+                            }
+                            self.fetchedBrewery.append(newBrewery)
                         }
                     }
-
                 }
             } catch {
                 print(error)
@@ -101,8 +115,6 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         }
     }.resume()
 }
-    
-
     
     override func tableView(_ tableView: UITableView,  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = breweryTableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
@@ -144,59 +156,17 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         }
     }
     
-    
-//    override func tableView(_ tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        let lastElement = breweryTableView.dataSource - 1
-//        if indexPath.row == lastElement {
-//            
-//        }
-//    }
-//    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "breweryDetailSegue",
             let destination = segue.destination as? BreweryDetailViewController,
             let breweryIndex = self.breweryTableView.indexPathForSelectedRow?.row
         {
             destination.breweryId = self.fetchedBrewery[breweryIndex].id
+            destination.breweryName = self.fetchedBrewery[breweryIndex].name
+            destination.breweryWebsite = self.fetchedBrewery[breweryIndex].website
+            destination.breweryDescription = self.fetchedBrewery[breweryIndex].description
+            destination.breweryImagePath = self.fetchedBrewery[breweryIndex].imagePath
+            
         }
         
     }
