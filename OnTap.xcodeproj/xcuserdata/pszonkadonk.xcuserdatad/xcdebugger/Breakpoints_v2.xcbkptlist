@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTap/BreweryListTableViewController.swift"
-            timestampString = "520027964.024079"
+            timestampString = "520395865.298973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "fetchBreweries(page:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTap/BreweryListTableViewController.swift"
+            timestampString = "520395865.298973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "parseBreweries(page:)"
+            landmarkName = "fetchBreweries(page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTap/BreweryListTableViewController.swift"
-            timestampString = "520027964.024079"
+            timestampString = "520395865.298973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "parseBreweries(page:)"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "fetchBreweries(page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,28 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTap/BreweryListTableViewController.swift"
-            timestampString = "520220889.921733"
+            timestampString = "520395865.298973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "parseBreweries(page:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OnTap/BreweryListTableViewController.swift"
-            timestampString = "520220889.921733"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "parseBreweries(page:)"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "fetchBreweries(page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTap/BreweryListTableViewController.swift"
-            timestampString = "520220889.921733"
+            timestampString = "520395865.298973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "parseBreweries(page:)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "fetchBreweries(page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTap/BreweryListTableViewController.swift"
-            timestampString = "520393521.461708"
+            timestampString = "520395865.298973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "parseBreweries(page:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "fetchBreweries(page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

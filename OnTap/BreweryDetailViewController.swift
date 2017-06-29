@@ -27,15 +27,16 @@ class BreweryDetailViewController: UIViewController {
         self.breweryDescriptionLabel.text = breweryDescription
         self.breweryWebsiteLabel.text = breweryWebsite
         
-        var breweryImageUrl = URL(string: breweryImagePath)
+        let breweryImageUrl = URL(string: breweryImagePath)
         if breweryImageUrl != nil {
             let data = try? Data(contentsOf: breweryImageUrl!)
             if let imageData = data {
-                self.breweryImageView.image = UIImage(data: data!)
-            } else {
-                self.breweryNameLabel.text = breweryName
+                self.breweryImageView.image = UIImage(data: imageData)
             }
+        } else {
+            self.breweryNameLabel.text = breweryName
         }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -30,10 +30,9 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         
-        parseBreweries()
+        fetchBreweries()
         
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -70,7 +69,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         return fetchedBrewery.count
     }
     
-    func parseBreweries(page:Int=1) {
+    func fetchBreweries(page:Int=1) {
 
         guard let url = URL(string: "http://api.brewerydb.com/v2/breweries/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.breweryPageNumber)")
             else {return }
@@ -83,7 +82,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
                     if let breweries = json["data"] as? [[String:Any]] {
                         for brewery in breweries {
-                            var newBrewery = Brewery()
+                            let newBrewery = Brewery()
                             if let breweryId = brewery["id"] as? String {
                                 newBrewery.id = breweryId
                             }
@@ -100,7 +99,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
                             }
                             
                             if let breweryImages = brewery["images"] as? [String:String] {
-                                var breweryImagePath = breweryImages["squareMedium"]
+                                let breweryImagePath = breweryImages["squareMedium"]
                                 newBrewery.imagePath = breweryImagePath!
                             }
                             self.fetchedBrewery.append(newBrewery)
@@ -150,7 +149,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
                 if !isLoadingNewData {
                     isLoadingNewData = true
-                    parseBreweries()
+                    fetchBreweries()
                 }
             }
         }
@@ -166,9 +165,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
             destination.breweryWebsite = self.fetchedBrewery[breweryIndex].website
             destination.breweryDescription = self.fetchedBrewery[breweryIndex].description
             destination.breweryImagePath = self.fetchedBrewery[breweryIndex].imagePath
-            
         }
-        
     }
 }
 
