@@ -170,6 +170,9 @@
                                 <rect key="frame" x="127" y="318" width="121" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Beer List"/>
+                                <connections>
+                                    <segue destination="poa-b8-l1m" kind="show" identifier="breweryBeerListSegue" id="rBv-jV-2V2"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="20" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpe-SF-qyo">
                                 <rect key="frame" x="29" y="359" width="317" height="258"/>
@@ -184,6 +187,7 @@
                     </view>
                     <connections>
                         <outlet property="BreweryDetailView" destination="cuk-4f-eE6" id="gtc-Ru-1YA"/>
+                        <outlet property="beerListButton" destination="wuX-lT-ogQ" id="wCE-kg-NSx"/>
                         <outlet property="breweryDescriptionLabel" destination="Lpe-SF-qyo" id="4Wl-UG-asf"/>
                         <outlet property="breweryDetailView" destination="cuk-4f-eE6" id="ihB-OZ-mjp"/>
                         <outlet property="breweryImageView" destination="lAR-ac-nRO" id="X1B-fK-vfT"/>
@@ -194,6 +198,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Euf-hI-fbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2805.5999999999999" y="138.98050974512745"/>
+        </scene>
+        <!--Brewery Beer List Table View Controller-->
+        <scene sceneID="lDL-uX-LGQ">
+            <objects>
+                <tableViewController id="poa-b8-l1m" customClass="BreweryBeerListTableViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eLj-i8-bi5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="beerCell" id="m9E-bf-hSq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m9E-bf-hSq" id="uBG-FO-Xx4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="poa-b8-l1m" id="28R-B9-kWC"/>
+                            <outlet property="delegate" destination="poa-b8-l1m" id="MBj-Cb-Y8D"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="beerListTableView" destination="eLj-i8-bi5" id="Qnv-kO-2qw"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJH-tb-bmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3617" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rRp-aZ-m2T">

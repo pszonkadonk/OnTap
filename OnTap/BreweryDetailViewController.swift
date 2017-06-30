@@ -15,6 +15,8 @@ class BreweryDetailViewController: UIViewController {
     @IBOutlet weak var breweryDescriptionLabel: UILabel!
     @IBOutlet weak var breweryWebsiteLabel: UILabel!
     @IBOutlet weak var breweryImageView: UIImageView!
+    @IBOutlet weak var beerListButton: UIButton!
+
     
     var breweryId: String = ""
     var breweryName: String = ""
@@ -47,14 +49,15 @@ class BreweryDetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "breweryBeerListSegue") {
+            let destination = segue.destination as? BreweryBeerListTableViewController
+            destination?.breweryId = self.breweryId
+        }
+        
+        
     }
-    */
+    
 
 }
