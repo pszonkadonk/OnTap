@@ -11,10 +11,16 @@ import UIKit
 class BeerDetailViewController: UIViewController {
     
     var targetBeer: Beer = Beer()
-
+    @IBOutlet weak var beerNameLabel: UILabel!
+    @IBOutlet weak var beerImageView: UIImageView!
+    @IBOutlet weak var beerAbvLabel: UILabel!
+    @IBOutlet weak var beerStyleLabel: UILabel!
+    @IBOutlet weak var beerIsOrganicLabel: UILabel!
+    @IBOutlet weak var beerDescriptionLabel: UILabel!
+    
+    
+    
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
         print("ID \(targetBeer.id)")
         print("NAME \(targetBeer.name)")
         print("DESCRIPTION \(targetBeer.description)")
@@ -23,7 +29,26 @@ class BeerDetailViewController: UIViewController {
         print("STYLE \(targetBeer.style)")
         print("STYLE ID \(targetBeer.styleId)")
         print("ImagePath \(targetBeer.imagePath)")
-    
+        
+        
+        self.beerNameLabel.text = targetBeer.name
+        self.beerAbvLabel.text = targetBeer.abv
+        self.beerStyleLabel.text = targetBeer.style
+        self.beerIsOrganicLabel.text = targetBeer.isOrganic
+        self.beerDescriptionLabel.text = targetBeer.description
+        
+        let beerImageUrl = URL(string: targetBeer.imagePath)
+        if(beerImageUrl != nil) {
+            let data = try? Data(contentsOf: beerImageUrl!)
+            if let imageData = data {
+                self.beerImageView.image = UIImage(data: imageData)
+            } else {
+                print("there was no image")
+                let filePath = Bundle.main.url(forResource: "placeHolderBeerImage", withExtension: "png")
+                self.beerImageView.image = UIImage(named: (filePath?.absoluteString)!)
+            }
+        }
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 

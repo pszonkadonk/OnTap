@@ -63,7 +63,6 @@ class BreweryBeerListTableViewController: UITableViewController {
            if let data = data {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        print(json)
                         if let beerList = json["data"] as? [[String: Any]] { //core data
                             for beer in beerList {
                                 let newBeer = Beer()
