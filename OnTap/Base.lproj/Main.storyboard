@@ -208,13 +208,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="beerCell" id="m9E-bf-hSq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="beerCell" textLabel="xsg-lV-OaV" style="IBUITableViewCellStyleDefault" id="m9E-bf-hSq">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m9E-bf-hSq" id="uBG-FO-Xx4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xsg-lV-OaV">
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="dWS-NU-5Tg" kind="show" identifier="beerDetailSegue" id="MaH-r7-jhS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -229,6 +241,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJH-tb-bmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3617" y="139"/>
+        </scene>
+        <!--Beer Detail View Controller-->
+        <scene sceneID="24X-aV-fLY">
+            <objects>
+                <viewController id="dWS-NU-5Tg" customClass="BeerDetailViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tAu-8p-cwu"/>
+                        <viewControllerLayoutGuide type="bottom" id="m1k-CV-fHy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5gT-Uy-MO1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfu-ga-TeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4477.6000000000004" y="138.98050974512745"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rRp-aZ-m2T">

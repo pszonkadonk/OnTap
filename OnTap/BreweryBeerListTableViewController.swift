@@ -24,7 +24,6 @@ class BreweryBeerListTableViewController: UITableViewController {
         beerListTableView.delegate = self
         
         fetchedBeers()
-        print(self.breweryId)
 
         super.viewDidLoad()
 
@@ -62,10 +61,10 @@ class BreweryBeerListTableViewController: UITableViewController {
         let session = URLSession.shared
         session.dataTask(with: url) {(data, response, error) in
            if let data = data {
-            print(data)
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let beerList = json["data"] as? [[String: Any]] {
+                        print(json)
+                        if let beerList = json["data"] as? [[String: Any]] { //core data
                             for beer in beerList {
                                 let newBeer = Beer()
                                 if let newBeerId = beer["id"] as? String {
@@ -73,6 +72,28 @@ class BreweryBeerListTableViewController: UITableViewController {
                                 }
                                 if let newBeerName = beer["name"] as? String {
                                     newBeer.name = newBeerName
+                                }
+                                if let isOrganic = beer["isOrganic"] as? String {
+                                    newBeer.isOrganic = isOrganic
+                                }
+                                if let beerLabels = beer["labels"] as? [String:Any] { //label data
+                                    if let beerLabel = beerLabels["medium"] as? String {
+                                        newBeer.imagePath = beerLabel
+                                    }
+                                }
+                                if let beerStyle = beer["style"] as? [String:Any] { //style data
+                                    if let beerABV = beerStyle["abvMax"] as? String {
+                                        newBeer.abv = beerABV
+                                    }
+                                    if let beerDescription = beerStyle["description"] as? String {
+                                        newBeer.description = beerDescription
+                                    }
+                                    if let style = beerStyle["shortName"] as? String {
+                                        newBeer.style = style
+                                    }
+                                    if let styleId = beerStyle["id"] as? String {
+                                        newBeer.styleId = styleId
+                                    }
                                 }
                                 self.fetchedBeerList.append(newBeer)
                             }
@@ -87,9 +108,6 @@ class BreweryBeerListTableViewController: UITableViewController {
 }
     
     
-    
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = beerListTableView.dequeueReusableCell(withIdentifier: "beerCell", for: indexPath)
         
@@ -102,6 +120,19 @@ class BreweryBeerListTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "beerDetailSegue",
+            let destination = segue.destination as? BeerDetailViewController,
+            let beerIndex = self.beerListTableView.indexPathForSelectedRow?.row
+        {
+            destination.targetBeer = self.fetchedBeerList[beerIndex]
+        }
+    }
+    
+        
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -137,15 +168,3 @@ class BreweryBeerListTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
