@@ -37,17 +37,19 @@ class BeerDetailViewController: UIViewController {
         self.beerIsOrganicLabel.text = targetBeer.isOrganic
         self.beerDescriptionLabel.text = targetBeer.description
         
-        let beerImageUrl = URL(string: targetBeer.imagePath)
-        if(beerImageUrl != nil) {
+        if(targetBeer.imagePath != "") {
+            let beerImageUrl = URL(string: targetBeer.imagePath)
             let data = try? Data(contentsOf: beerImageUrl!)
             if let imageData = data {
                 self.beerImageView.image = UIImage(data: imageData)
-            } else {
-                print("there was no image")
-                let filePath = Bundle.main.url(forResource: "placeHolderBeerImage", withExtension: "png")
-                self.beerImageView.image = UIImage(named: (filePath?.absoluteString)!)
             }
+        } else {
+            print("there was no image")
+            let filePath = Bundle.main.path(forResource: "placeholder", ofType: "png")
+            print(filePath)
+            self.beerImageView.image = UIImage(contentsOfFile: filePath!)
         }
+
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

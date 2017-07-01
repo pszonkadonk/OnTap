@@ -10,7 +10,7 @@
 		750689E91EFF072E0059C77B /* BreweryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */; };
 		750689EB1EFF079C0059C77B /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689EA1EFF079C0059C77B /* Brewery.swift */; };
 		7525C4771F07FEDA00272689 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */; };
-		7525C4801F08392E00272689 /* placeholderBeerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7525C47F1F08392E00272689 /* placeholderBeerImage.png */; };
+		7525C4821F0840EC00272689 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7525C4811F0840EC00272689 /* placeholder.png */; };
 		7578115B1EF9FF6800D102AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115A1EF9FF6800D102AB /* AppDelegate.swift */; };
 		7578115D1EF9FF6800D102AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115C1EF9FF6800D102AB /* ViewController.swift */; };
 		757811601EF9FF6800D102AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7578115E1EF9FF6800D102AB /* Main.storyboard */; };
@@ -36,7 +36,7 @@
 		750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryDetailViewController.swift; sourceTree = "<group>"; };
 		750689EA1EFF079C0059C77B /* Brewery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 		7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
-		7525C47F1F08392E00272689 /* placeholderBeerImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholderBeerImage.png; path = ../../../../Desktop/placeholderBeerImage.png; sourceTree = "<group>"; };
+		7525C4811F0840EC00272689 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../../../../Downloads/placeholder.png; sourceTree = "<group>"; };
 		757811571EF9FF6800D102AB /* OnTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7578115A1EF9FF6800D102AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7578115C1EF9FF6800D102AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +73,7 @@
 		7525C47C1F08359300272689 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				7525C4811F0840EC00272689 /* placeholder.png */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -105,7 +106,6 @@
 				7578115E1EF9FF6800D102AB /* Main.storyboard */,
 				7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */,
 				757811611EF9FF6800D102AB /* Assets.xcassets */,
-				7525C47F1F08392E00272689 /* placeholderBeerImage.png */,
 				757811631EF9FF6800D102AB /* LaunchScreen.storyboard */,
 				757811661EF9FF6800D102AB /* Info.plist */,
 				75D3469D1EFDF70400E446C9 /* BreweryListTableViewController.swift */,
@@ -209,9 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				757811651EF9FF6800D102AB /* LaunchScreen.storyboard in Resources */,
+				7525C4821F0840EC00272689 /* placeholder.png in Resources */,
 				757811621EF9FF6800D102AB /* Assets.xcassets in Resources */,
 				757811601EF9FF6800D102AB /* Main.storyboard in Resources */,
-				7525C4801F08392E00272689 /* placeholderBeerImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMPRESS_PNG_FILES = NO;
+				COMPRESS_PNG_FILES = YES;
 				INFOPLIST_FILE = OnTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.OnTap;
@@ -390,7 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMPRESS_PNG_FILES = NO;
+				COMPRESS_PNG_FILES = YES;
 				INFOPLIST_FILE = OnTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.OnTap;
