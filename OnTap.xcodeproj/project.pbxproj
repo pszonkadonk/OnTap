@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		750689E91EFF072E0059C77B /* BreweryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */; };
 		750689EB1EFF079C0059C77B /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689EA1EFF079C0059C77B /* Brewery.swift */; };
+		75151BD91F15AE67009952CE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75151BD81F15AE67009952CE /* MapKit.framework */; };
+		75151BDB1F15B389009952CE /* BreweryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151BDA1F15B389009952CE /* BreweryMapViewController.swift */; };
+		75151BDD1F15B684009952CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75151BDC1F15B684009952CE /* CoreLocation.framework */; };
 		7525C4771F07FEDA00272689 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */; };
 		7525C4821F0840EC00272689 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7525C4811F0840EC00272689 /* placeholder.png */; };
 		7578115B1EF9FF6800D102AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115A1EF9FF6800D102AB /* AppDelegate.swift */; };
@@ -35,6 +38,9 @@
 /* Begin PBXFileReference section */
 		750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryDetailViewController.swift; sourceTree = "<group>"; };
 		750689EA1EFF079C0059C77B /* Brewery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
+		75151BD81F15AE67009952CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		75151BDA1F15B389009952CE /* BreweryMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BreweryMapViewController.swift; path = ../BreweryMapViewController.swift; sourceTree = "<group>"; };
+		75151BDC1F15B684009952CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
 		7525C4811F0840EC00272689 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../../../../Downloads/placeholder.png; sourceTree = "<group>"; };
 		757811571EF9FF6800D102AB /* OnTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75151BDD1F15B684009952CE /* CoreLocation.framework in Frameworks */,
+				75151BD91F15AE67009952CE /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75151BD71F15AE67009952CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75151BDC1F15B684009952CE /* CoreLocation.framework */,
+				75151BD81F15AE67009952CE /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7525C47C1F08359300272689 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +101,7 @@
 				757811591EF9FF6800D102AB /* OnTap */,
 				7578116E1EF9FF6900D102AB /* OnTapTests */,
 				757811581EF9FF6800D102AB /* Products */,
+				75151BD71F15AE67009952CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +117,7 @@
 		757811591EF9FF6800D102AB /* OnTap */ = {
 			isa = PBXGroup;
 			children = (
+				75151BDA1F15B389009952CE /* BreweryMapViewController.swift */,
 				7525C47C1F08359300272689 /* resources */,
 				7578115A1EF9FF6800D102AB /* AppDelegate.swift */,
 				7578115C1EF9FF6800D102AB /* ViewController.swift */,
@@ -176,6 +195,11 @@
 					757811561EF9FF6800D102AB = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					7578116A1EF9FF6900D102AB = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -237,6 +261,7 @@
 				7585DA381F05DF9F0076DE7B /* BreweryBeerListTableViewController.swift in Sources */,
 				7585DA3A1F05E0D50076DE7B /* Beer.swift in Sources */,
 				75D3469E1EFDF70400E446C9 /* BreweryListTableViewController.swift in Sources */,
+				75151BDB1F15B389009952CE /* BreweryMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,6 +32,8 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         
         fetchBreweries()
         
+        breweryTableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        breweryTableView.separatorColor = UIColor .darkGray
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -117,15 +119,15 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView,  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = breweryTableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
-            let text: String!
-            
-            if isSearching {
-                text = filteredBrewery[indexPath.row].name
-            } else {
-                text = self.fetchedBrewery[indexPath.row].name
-            }
+        let text: String!
+        
+        if isSearching {
+            text = filteredBrewery[indexPath.row].name
+        } else {
+            text = self.fetchedBrewery[indexPath.row].name
+        }
         cell.textLabel?.text = text
-
+        
         return cell
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +26,6 @@
                                 <rect key="frame" x="49" y="96" width="276" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDB-I3-CAr">
@@ -36,7 +36,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Breweries">
-                                            <color key="titleColor" red="1" green="0.26969944895227393" blue="0.54194996969821951" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="ego-Kf-Mzl" kind="show" id="Ibh-0x-72E"/>
@@ -47,25 +47,28 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Beers">
-                                            <color key="titleColor" red="1" green="0.26969944899999998" blue="0.54194996969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su8-EN-y1b">
                                         <rect key="frame" x="34" y="210" width="93" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <state key="normal" title="Events">
-                                            <color key="titleColor" red="1" green="0.26969944899999998" blue="0.54194996969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="On The Map">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="NwQ-J0-Vyb" kind="show" id="UDw-4r-PMR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.79730497941060452" green="1" blue="0.94877451022811621" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="161" id="DJH-s3-45x"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.088985314613584443" green="0.40891328288993339" blue="0.50563202711640209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rDB-I3-CAr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Db3-qW-Coi"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rDB-I3-CAr" secondAttribute="bottom" id="f7i-3S-Cts"/>
@@ -86,6 +89,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--Brewery Map View Controller-->
+        <scene sceneID="N8L-Zl-PUD">
+            <objects>
+                <viewController id="NwQ-J0-Vyb" customClass="BreweryMapViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9SG-k6-7V9"/>
+                        <viewControllerLayoutGuide type="bottom" id="pWF-V6-Noh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XeR-vl-ZHm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4M4-T5-Gid">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pWF-V6-Noh" firstAttribute="top" secondItem="4M4-T5-Gid" secondAttribute="bottom" id="C9K-gO-i6c"/>
+                            <constraint firstItem="4M4-T5-Gid" firstAttribute="top" secondItem="9SG-k6-7V9" secondAttribute="bottom" constant="-64" id="St5-gW-6zs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4M4-T5-Gid" secondAttribute="trailing" constant="-16" id="cPl-7L-ry0"/>
+                            <constraint firstItem="4M4-T5-Gid" firstAttribute="leading" secondItem="XeR-vl-ZHm" secondAttribute="leadingMargin" constant="-16" id="jkC-XM-eQZ"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="map" destination="4M4-T5-Gid" id="JXW-f7-zuG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dtu-8v-dPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="875"/>
         </scene>
         <!--Brewery List Table View Controller-->
         <scene sceneID="fVO-C5-crg">
