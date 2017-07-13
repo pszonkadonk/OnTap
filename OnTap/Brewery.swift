@@ -7,28 +7,42 @@
 //
 
 import Foundation
+import MapKit
 
-class Brewery {
+class Brewery: NSObject, MKAnnotation {
     var id: String
     var name: String
     var website: String
-    var description: String
+    var breweryDescription: String
     var imagePath: String
+    var coordinate: CLLocationCoordinate2D
     
-    init() {
+    override init() {
         self.id = ""
         self.name = ""
         self.website = ""
-        self.description = ""
+        self.breweryDescription = ""
         self.imagePath = ""
+        coordinate = CLLocationCoordinate2D()
     }
     
     init(id: String, name: String) {
         self.id = id
         self.name = name
         self.website = ""
-        self.description = ""
+        self.breweryDescription = ""
         self.imagePath = ""
+        coordinate = CLLocationCoordinate2D()
     }
     
+    func mapItem() -> MKMapItem {
+        let addressDict = [CNPostalAddressSteetKey: self.name!]
+        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
+        
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = self.name
+        
+        return mapItem
+    }
+
 }

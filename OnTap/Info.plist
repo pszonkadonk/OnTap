@@ -34,9 +34,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Hey, can I have permission to access your location?</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>I always need to know your location, ok?</string>
+	<string>Ask location when in use</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

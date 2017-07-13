@@ -97,7 +97,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
                                 newBrewery.website = breweryWebsite
                             }
                             if let breweryDescription = brewery["description"] as? String {
-                                newBrewery.description = breweryDescription
+                                newBrewery.breweryDescription = breweryDescription
                             }
                             
                             if let breweryImages = brewery["images"] as? [String:String] {
@@ -165,7 +165,7 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
             destination.breweryId = self.fetchedBrewery[breweryIndex].id
             destination.breweryName = self.fetchedBrewery[breweryIndex].name
             destination.breweryWebsite = self.fetchedBrewery[breweryIndex].website
-            destination.breweryDescription = self.fetchedBrewery[breweryIndex].description
+            destination.breweryDescription = self.fetchedBrewery[breweryIndex].breweryDescription
             destination.breweryImagePath = self.fetchedBrewery[breweryIndex].imagePath
         }
     }
