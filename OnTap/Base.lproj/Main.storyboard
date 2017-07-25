@@ -29,10 +29,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDB-I3-CAr">
-                                <rect key="frame" x="-161" y="64" width="161" height="603"/>
+                                <rect key="frame" x="-191" y="64" width="191" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5j5-00-E34">
-                                        <rect key="frame" x="34" y="46" width="93" height="51"/>
+                                        <rect key="frame" x="34" y="46" width="120" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Breweries">
@@ -42,16 +42,8 @@
                                             <segue destination="ego-Kf-Mzl" kind="show" id="Ibh-0x-72E"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8n-Bf-54b">
-                                        <rect key="frame" x="34" y="126" width="93" height="51"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <state key="normal" title="Beers">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su8-EN-y1b">
-                                        <rect key="frame" x="34" y="210" width="93" height="51"/>
+                                        <rect key="frame" x="34" y="125" width="120" height="72"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Map">
@@ -61,10 +53,56 @@
                                             <segue destination="SJf-Ri-Yrh" kind="show" identifier="mapSegue" id="QBp-gY-RXe"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UoE-TN-B1j">
+                                        <rect key="frame" x="34" y="222" width="120" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Find A Beer">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" metaFont="system" size="21"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="charWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-KM-C94">
+                                        <rect key="frame" x="34" y="310" width="120" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Hops">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6y-bj-cJ4">
+                                        <rect key="frame" x="34" y="400" width="120" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Styles">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmD-03-aiJ">
+                                        <rect key="frame" x="34" y="492" width="120" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Beer Guilds">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" metaFont="system" size="21"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="161" id="DJH-s3-45x"/>
+                                    <constraint firstAttribute="width" constant="191" id="DJH-s3-45x"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -72,7 +110,7 @@
                         <constraints>
                             <constraint firstItem="rDB-I3-CAr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Db3-qW-Coi"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rDB-I3-CAr" secondAttribute="bottom" id="f7i-3S-Cts"/>
-                            <constraint firstItem="rDB-I3-CAr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-161" id="gsd-Dr-vCa"/>
+                            <constraint firstItem="rDB-I3-CAr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-191" id="gsd-Dr-vCa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MainMenu" id="ahg-UM-DOq">
