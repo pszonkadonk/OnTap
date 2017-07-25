@@ -5,7 +5,6 @@
 //  Created by Michael Pszonka on 7/16/17.
 //  Copyright © 2017 Michael Pszonka. All rights reserved.
 //
-
 import Foundation
 import MapKit
 import Contacts
@@ -36,9 +35,20 @@ class BreweryLocation: NSObject, MKAnnotation {
         return name
     }
     
+    func pinTintColor() -> UIColor  {
+        print(name)
+        switch name {
+        case "Stevens Institute of Technology":
+            return MKPinAnnotationView.redPinColor()
+        default:
+            return MKPinAnnotationView.greenPinColor()
+        }
+    }
+    
+    
     // annotation callout info button opens this mapItem in Maps app
     func mapItem() -> MKMapItem {
-        let addressDictionary = [CNPostalAddressStreetKey: subtitle]
+        let addressDictionary = [CNPostalAddressStreetKey: subtitle!]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary)
         
         let mapItem = MKMapItem(placemark: placemark)

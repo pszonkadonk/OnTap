@@ -5,14 +5,15 @@
 //  Created by Michael Pszonka on 7/16/17.
 //  Copyright © 2017 Michael Pszonka. All rights reserved.
 //
-
 import Foundation
 import MapKit
 
 extension BreweryMapViewController: MKMapViewDelegate {
     
     // 1
-    func mapView(_ mapView: MKMapView!, viewFor annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(_ mapView: MKMapView,
+                 viewFor annotation: MKAnnotation!) -> MKAnnotationView? {
+        print("getting called to create annotation")
         if let annotation = annotation as? BreweryLocation {
             let identifier = "pin"
             var view: MKPinAnnotationView
@@ -27,6 +28,7 @@ extension BreweryMapViewController: MKMapViewDelegate {
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
             }
+            view.pinTintColor = annotation.pinTintColor()
             return view
         }
         return nil
@@ -37,8 +39,8 @@ extension BreweryMapViewController: MKMapViewDelegate {
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMaps(launchOptions: launchOptions)
     }
-
-
+    
+    
     
     
     

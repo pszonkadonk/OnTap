@@ -102,18 +102,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LAh-53-bm5">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LAh-53-bm5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="LAh-53-bm5" secondAttribute="trailing" constant="-16" id="3YF-Sf-Dvd"/>
+                            <constraint firstItem="bnG-Mr-ifJ" firstAttribute="top" secondItem="LAh-53-bm5" secondAttribute="bottom" id="5J3-Rv-DXL"/>
+                            <constraint firstItem="LAh-53-bm5" firstAttribute="top" secondItem="0M3-RN-5PN" secondAttribute="bottom" constant="-64" id="daG-1A-4Ai"/>
                             <constraint firstItem="LAh-53-bm5" firstAttribute="leading" secondItem="dAR-zb-kTm" secondAttribute="leadingMargin" constant="-16" id="r5W-6Z-LIU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="LAh-53-bm5" id="OlM-3t-uBe"/>
+                        <outlet property="mapView" destination="LAh-53-bm5" id="Hzd-LI-Dtv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGR-9e-IPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
