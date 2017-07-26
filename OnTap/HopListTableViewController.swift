@@ -58,20 +58,20 @@ class HopListTableViewController: UITableViewController {
             if let data = data {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let hops = json["data"] as? [[String:Any]] {
+                        if let hopsList = json["data"] as? [String:Any] {
                             for hops in hopsList {
                                 let newHops = Hops()
-                                if hops.description != nil {
+                                if hops["description"] != nil {
                                     if let id = hopsList["id"] as? Int {
-                                        newHops.id = hopsId
+                                        newHops.id = id
                                     }
                                     
                                     if let name = hopsList["name"] as? String {
-                                        newHops.name = hopsName
+                                        newHops.name = name
                                     }
                                     
                                     if let description = hopsList["description"] as? String {
-                                        newHops.description = breweryWebsite
+                                        newHops.description = description
                                     }
                                     if let alphaAcidMin = hopsList["alphaAcidMin"] as? Int {
                                         newHops.alphaAcidMin = alphaAcidMin
@@ -89,13 +89,13 @@ class HopListTableViewController: UITableViewController {
                                         newHops.humuleneMin = humuleneMin
                                     }
                                     
-                                    if let humuleneMax = hopsList["humuleneMax"] as? Int {
-                                        newHops.humuleneMax = hopsList["humuleneMax"]
-                                    }
+//                                    if let humuleneMax = hopsList["humuleneMax"] as? Int {
+//                                        newHops.humuleneMax = humuleneMax
+//                                    }
                                     
-                                    if let caryophylleneMin = hopsList["caryophylleneMin"] as? Int {
-                                        newHops.caryophylleneMin = caryophylleneMin
-                                    }
+//                                    if let caryophylleneMin = hopsList["caryophylleneMin"] as? Int {
+//                                        newHops.caryophylleneMin = caryophylleneMin
+//                                    }
                                     
                                     if let caryophylleneMax = hopsList["caryophylleneMax"] as? Int {
                                         newHops.caryophylleneMax = caryophylleneMax
@@ -133,8 +133,7 @@ class HopListTableViewController: UITableViewController {
                 } catch {
                     print(error)
                 }
-                self.breweryTableView.reloadData()
-                self.breweryPageNumber += 1
+                self.hopsTableView.reloadData()
             }
             }.resume()
     }
