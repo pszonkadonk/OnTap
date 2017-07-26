@@ -13,6 +13,8 @@
 		75151BDD1F15B684009952CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75151BDC1F15B684009952CE /* CoreLocation.framework */; };
 		7525C4771F07FEDA00272689 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */; };
 		7525C4821F0840EC00272689 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7525C4811F0840EC00272689 /* placeholder.png */; };
+		756686021F28257D0017D5CF /* HopListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756686011F28257D0017D5CF /* HopListTableViewController.swift */; };
+		756686041F28281D0017D5CF /* Hops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756686031F28281D0017D5CF /* Hops.swift */; };
 		7578115B1EF9FF6800D102AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115A1EF9FF6800D102AB /* AppDelegate.swift */; };
 		7578115D1EF9FF6800D102AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115C1EF9FF6800D102AB /* ViewController.swift */; };
 		757811601EF9FF6800D102AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7578115E1EF9FF6800D102AB /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		75151BDC1F15B684009952CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
 		7525C4811F0840EC00272689 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../../../../Downloads/placeholder.png; sourceTree = "<group>"; };
+		756686011F28257D0017D5CF /* HopListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HopListTableViewController.swift; sourceTree = "<group>"; };
+		756686031F28281D0017D5CF /* Hops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hops.swift; sourceTree = "<group>"; };
 		757811571EF9FF6800D102AB /* OnTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7578115A1EF9FF6800D102AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7578115C1EF9FF6800D102AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				7578115C1EF9FF6800D102AB /* ViewController.swift */,
 				7585DA371F05DF9F0076DE7B /* BreweryBeerListTableViewController.swift */,
 				7578115E1EF9FF6800D102AB /* Main.storyboard */,
+				756686011F28257D0017D5CF /* HopListTableViewController.swift */,
 				7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */,
 				757811611EF9FF6800D102AB /* Assets.xcassets */,
 				757811631EF9FF6800D102AB /* LaunchScreen.storyboard */,
@@ -137,6 +142,7 @@
 				750689EA1EFF079C0059C77B /* Brewery.swift */,
 				75F80EDE1F1BD4E700EB27DB /* BreweryLocation.swift */,
 				7585DA391F05E0D50076DE7B /* Beer.swift */,
+				756686031F28281D0017D5CF /* Hops.swift */,
 			);
 			path = OnTap;
 			sourceTree = "<group>";
@@ -272,6 +278,8 @@
 				7585DA381F05DF9F0076DE7B /* BreweryBeerListTableViewController.swift in Sources */,
 				7585DA3A1F05E0D50076DE7B /* Beer.swift in Sources */,
 				75F80EDF1F1BD4E700EB27DB /* BreweryLocation.swift in Sources */,
+				756686041F28281D0017D5CF /* Hops.swift in Sources */,
+				756686021F28257D0017D5CF /* HopListTableViewController.swift in Sources */,
 				75D3469E1EFDF70400E446C9 /* BreweryListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
