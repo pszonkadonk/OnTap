@@ -12,22 +12,18 @@ class HopListTableViewController: UITableViewController {
 
     @IBOutlet weak var hopsTableView: UITableView!
     var fetchedHops = [Hops]()
-    var hopsPages: Int = 0
+    var hopsPageNumber: Int = 1
     
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         hopsTableView.dataSource = self
         hopsTableView.delegate = self
-        hopsPages = getHopsPages()
-        print(hopsPages)
-        
-        for i in 1...hopsPages {
-            fetchHops(pageNumber: i)
-        }
-        
+//        hopsPages = getHopsPages()
+//        print(hopsPages)
+        fetchHops()
+        super.viewDidLoad()
 
     }
 
@@ -40,16 +36,16 @@ class HopListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return fetchedHops.count
     }
     
-    func fetchHops(pageNumber: Int) {
-        guard let url = URL(string: "http://api.brewerydb.com/v2/breweries/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(pageNumber)")
+    func fetchHops(pageNumber: Int=1) {
+        guard let url = URL(string: "http://api.brewerydb.com/v2/hops/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.hopsPageNumber)")
             else {return }
         
         let session = URLSession.shared
@@ -58,85 +54,85 @@ class HopListTableViewController: UITableViewController {
             if let data = data {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let hopsList = json["data"] as? [String:Any] {
+                        if let hopsList = json["data"] as? [[String:Any]] {
                             for hops in hopsList {
                                 let newHops = Hops()
-                                if hops["description"] != nil {
-                                    if let id = hopsList["id"] as? Int {
+                                    if let id = hops["id"] as? Int {
                                         newHops.id = id
                                     }
                                     
-                                    if let name = hopsList["name"] as? String {
+                                    if let name = hops["name"] as? String {
                                         newHops.name = name
                                     }
                                     
-                                    if let description = hopsList["description"] as? String {
+                                    if let description = hops["description"] as? String {
                                         newHops.description = description
                                     }
-                                    if let alphaAcidMin = hopsList["alphaAcidMin"] as? Int {
+                                    if let alphaAcidMin = hops["alphaAcidMin"] as? Int {
                                         newHops.alphaAcidMin = alphaAcidMin
                                     }
 
-                                    if let betaAcidMin = hopsList["betaAcidMin"] as? Int {
+                                    if let betaAcidMin = hops["betaAcidMin"] as? Int {
                                         newHops.betaAcidMin = betaAcidMin
                                     }
                                     
-                                    if let betaAcidMax = hopsList["betaAcidMax"] as? Int {
+                                    if let betaAcidMax = hops["betaAcidMax"] as? Int {
                                         newHops.betaAcidMax = betaAcidMax
                                     }
                                     
-                                    if let humuleneMin = hopsList["humuleneMin"] as? Int {
+                                    if let humuleneMin = hops["humuleneMin"] as? Int {
                                         newHops.humuleneMin = humuleneMin
                                     }
                                     
-//                                    if let humuleneMax = hopsList["humuleneMax"] as? Int {
-//                                        newHops.humuleneMax = humuleneMax
-//                                    }
+                                    if let humuleneMax = hops["humuleneMax"] as? Int {
+                                        newHops.humuleneMax = humuleneMax
+                                    }
                                     
-//                                    if let caryophylleneMin = hopsList["caryophylleneMin"] as? Int {
-//                                        newHops.caryophylleneMin = caryophylleneMin
-//                                    }
-                                    
-                                    if let caryophylleneMax = hopsList["caryophylleneMax"] as? Int {
+                                    if let caryophylleneMin = hops["caryophylleneMin"] as? Int {
+                                        newHops.caryophylleneMin = caryophylleneMin
+                                    }
+                                
+                                    if let caryophylleneMax = hops["caryophylleneMax"] as? Int {
                                         newHops.caryophylleneMax = caryophylleneMax
                                     }
                                     
-                                    if let cohumuloneMin = hopsList["cohumuloneMin"] as? Int {
+                                    if let cohumuloneMin = hops["cohumuloneMin"] as? Int {
                                         newHops.cohumuloneMin = cohumuloneMin
                                      }
                                     
-                                    if let cohumuloneMax = hopsList["cohumuloneMax"] as? Int {
+                                    if let cohumuloneMax = hops["cohumuloneMax"] as? Int {
                                         newHops.cohumuloneMax = cohumuloneMax
                                     }
                                     
-                                    if let myrceneMin = hopsList["myrceneMin"] as? Int {
+                                    if let myrceneMin = hops["myrceneMin"] as? Int {
                                         newHops.myrceneMin = myrceneMin
                                     }
                                     
-                                    if let myrceneMax = hopsList["myrceneMax"] as? Int {
+                                    if let myrceneMax = hops["myrceneMax"] as? Int {
                                         newHops.myrceneMax = myrceneMax
                                     }
                                     
-                                    if let farneseneMin = hopsList["farneseneMin"] as? Int {
+                                    if let farneseneMin = hops["farneseneMin"] as? Int {
                                         newHops.farneseneMin = farneseneMin
                                     }
                                     
-                                    if let farneseneMax = hopsList["farneseneMax"] as? Int {
+                                    if let farneseneMax = hops["farneseneMax"] as? Int {
                                         newHops.farneseneMax = farneseneMax
                                     }
-                                    
+                                
                                     self.fetchedHops.append(newHops)
                                 }
                             }
                         }
-                    }
                 } catch {
                     print(error)
                 }
-                self.hopsTableView.reloadData()
             }
-            }.resume()
+        self.hopsTableView.reloadData()
+        self.hopsPageNumber += 1
+        }.resume()
     }
+
     
     func getHopsPages() -> Int {
         var pageNum = 0
@@ -174,51 +170,32 @@ class HopListTableViewController: UITableViewController {
 
         return cell
     }
- 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    var isLoadingNewData: Bool = false
+    
+    if scrollView == hopsTableView {
+        if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+            if !isLoadingNewData {
+                isLoadingNewData = true
+                fetchHops()
+            }
+        }
     }
-    */
+}
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "hopsDetailSegue",
+            let destination = segue.destination as? HopsDetailViewController,
+            let hopsIndex = self.hopsTableView.indexPathForSelectedRow?.row
+        {
+            destination.hopsNameLabelText = self.fetchedHops[hopsIndex].name
+            destination.hopsDescriptionText = self.fetchedHops[hopsIndex].description
+            
+        }
     }
-    */
-
+    
 }

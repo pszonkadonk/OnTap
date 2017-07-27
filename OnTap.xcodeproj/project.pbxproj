@@ -13,6 +13,7 @@
 		75151BDD1F15B684009952CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75151BDC1F15B684009952CE /* CoreLocation.framework */; };
 		7525C4771F07FEDA00272689 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */; };
 		7525C4821F0840EC00272689 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7525C4811F0840EC00272689 /* placeholder.png */; };
+		7535EEC11F29806200341658 /* HopsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535EEC01F29806200341658 /* HopsDetailViewController.swift */; };
 		756686021F28257D0017D5CF /* HopListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756686011F28257D0017D5CF /* HopListTableViewController.swift */; };
 		756686041F28281D0017D5CF /* Hops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756686031F28281D0017D5CF /* Hops.swift */; };
 		7578115B1EF9FF6800D102AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578115A1EF9FF6800D102AB /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 		75151BDC1F15B684009952CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
 		7525C4811F0840EC00272689 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../../../../Downloads/placeholder.png; sourceTree = "<group>"; };
+		7535EEC01F29806200341658 /* HopsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HopsDetailViewController.swift; sourceTree = "<group>"; };
 		756686011F28257D0017D5CF /* HopListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HopListTableViewController.swift; sourceTree = "<group>"; };
 		756686031F28281D0017D5CF /* Hops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hops.swift; sourceTree = "<group>"; };
 		757811571EF9FF6800D102AB /* OnTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				7578115C1EF9FF6800D102AB /* ViewController.swift */,
 				7585DA371F05DF9F0076DE7B /* BreweryBeerListTableViewController.swift */,
 				7578115E1EF9FF6800D102AB /* Main.storyboard */,
+				7535EEC01F29806200341658 /* HopsDetailViewController.swift */,
 				756686011F28257D0017D5CF /* HopListTableViewController.swift */,
 				7525C4761F07FEDA00272689 /* BeerDetailViewController.swift */,
 				757811611EF9FF6800D102AB /* Assets.xcassets */,
@@ -277,6 +280,7 @@
 				750689EB1EFF079C0059C77B /* Brewery.swift in Sources */,
 				7585DA381F05DF9F0076DE7B /* BreweryBeerListTableViewController.swift in Sources */,
 				7585DA3A1F05E0D50076DE7B /* Beer.swift in Sources */,
+				7535EEC11F29806200341658 /* HopsDetailViewController.swift in Sources */,
 				75F80EDF1F1BD4E700EB27DB /* BreweryLocation.swift in Sources */,
 				756686041F28281D0017D5CF /* Hops.swift in Sources */,
 				756686021F28257D0017D5CF /* HopListTableViewController.swift in Sources */,
