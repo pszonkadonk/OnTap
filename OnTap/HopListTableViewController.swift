@@ -194,7 +194,20 @@ override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerat
         {
             destination.hopsNameLabelText = self.fetchedHops[hopsIndex].name
             destination.hopsDescriptionText = self.fetchedHops[hopsIndex].description
-            
+            destination.hopsAttributes.append(["Alpha Acid Min":self.fetchedHops[hopsIndex].alphaAcidMin])
+            destination.hopsAttributes.append(["Beta Acid Min":self.fetchedHops[hopsIndex].betaAcidMin])
+            destination.hopsAttributes.append(["Beta Acid Max":self.fetchedHops[hopsIndex].betaAcidMax])
+            destination.hopsAttributes.append(["Humelene Min":self.fetchedHops[hopsIndex].humuleneMin])
+            destination.hopsAttributes.append(["Humelene Max":self.fetchedHops[hopsIndex].humuleneMax])
+            destination.hopsAttributes.append(["Caryophyllene Min":self.fetchedHops[hopsIndex].caryophylleneMin])
+            destination.hopsAttributes.append(["Caryophyllene Max": self.fetchedHops[hopsIndex].caryophylleneMax])
+            destination.hopsAttributes.append(["Cohumelene Min":self.fetchedHops[hopsIndex].cohumuloneMin])
+            destination.hopsAttributes.append(["Cohumelene Max":self.fetchedHops[hopsIndex].cohumuloneMax])
+            destination.hopsAttributes.append(["Myrcene Min":self.fetchedHops[hopsIndex].myrceneMin])
+            destination.hopsAttributes.append(["Myrcene Max":self.fetchedHops[hopsIndex].myrceneMax])
+            destination.hopsAttributes.append(["Farnesene Min":self.fetchedHops[hopsIndex].farneseneMin])
+            destination.hopsAttributes.append(["Farnesene Max":self.fetchedHops[hopsIndex].farneseneMax])
+
         }
     }
     
