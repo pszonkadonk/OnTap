@@ -166,7 +166,6 @@ class HopListTableViewController: UITableViewController {
 
         cell.textLabel?.text = text
 
-        // Configure the cell...
 
         return cell
     }
