@@ -8,21 +8,29 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseAuth
 
-class ViewController: UIViewController {
+class MainMenu: UIViewController {
     
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    
+    
     
     var menuShowing: Bool = false
     var myList = [BreweryLocation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(Auth.auth().currentUser?.email)
+        
         var count = 1
         while(count < 50) {
             loadLocationData(pageNumber: count)
             count+=1
         }
+        
+        
         
     }
     

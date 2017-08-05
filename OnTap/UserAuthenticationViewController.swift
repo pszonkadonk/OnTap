@@ -25,7 +25,8 @@ class UserAuthenticationViewController: UIViewController {
                 Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                     if(user != nil) {
                         // successful login
-                        print("SUCCESS")
+                        self.performSegue(withIdentifier: "mainMenuSegue", sender: self)
+                        
                     }
                     else {
                         // print out error, 
@@ -44,9 +45,7 @@ class UserAuthenticationViewController: UIViewController {
                 Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                  
                     if(user != nil) { //successfully signed up user
-                        
-                        print("SUCCESS")
-                        
+                        self.performSegue(withIdentifier: "mainMenuSegue", sender: self)
                     }
                     else { //failed to sign up user
                         // print out error,
