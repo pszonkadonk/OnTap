@@ -104,6 +104,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <segue destination="vkA-Ke-m2h" kind="show" id="Oqv-AI-Pfp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGR-9e-IPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4" y="901"/>
+            <point key="canvasLocation" x="-490" y="899"/>
         </scene>
         <!--Hop List Table View Controller-->
         <scene sceneID="3Lg-x3-vbY">
@@ -198,7 +201,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Mj-rX-rYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802" y="1089"/>
+            <point key="canvasLocation" x="468" y="1128"/>
         </scene>
         <!--Beer Style Table Table View Controller-->
         <scene sceneID="dhf-Pf-pca">
@@ -232,7 +235,41 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsk-8p-0d2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="1089"/>
+            <point key="canvasLocation" x="1359" y="1128"/>
+        </scene>
+        <!--Guild List Table View Controller-->
+        <scene sceneID="kOq-Rr-De5">
+            <objects>
+                <tableViewController id="vkA-Ke-m2h" customClass="GuildListTableViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3AW-TL-CvE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="guildCell" id="31R-B1-ddn">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31R-B1-ddn" id="axc-hi-p6R">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="OKc-vG-um8" kind="show" identifier="guildDetailSegue" id="qa7-40-5RS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vkA-Ke-m2h" id="SpG-ct-qQv"/>
+                            <outlet property="delegate" destination="vkA-Ke-m2h" id="g88-j1-pyn"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="guildListTableView" destination="3AW-TL-CvE" id="A45-2T-yvH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36w-Ib-RIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2254" y="1128"/>
         </scene>
         <!--Hops Detail View Controller-->
         <scene sceneID="TwP-V5-1yj">
@@ -297,7 +334,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLq-Nm-pyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="1912"/>
+            <point key="canvasLocation" x="468" y="1912"/>
         </scene>
         <!--Beer Style Detail View Controller-->
         <scene sceneID="slr-eG-7b7">
@@ -342,7 +379,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VrI-pV-gXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="1911.9940029985009"/>
+            <point key="canvasLocation" x="1358" y="1912"/>
+        </scene>
+        <!--Guild Detail View Controller-->
+        <scene sceneID="oEd-qr-DEt">
+            <objects>
+                <viewController id="OKc-vG-um8" customClass="GuildDetailViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BkC-DS-6L0"/>
+                        <viewControllerLayoutGuide type="bottom" id="UM9-BM-PRu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gym-5X-dIx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwN-tx-Ndd">
+                                <rect key="frame" x="39" y="85" width="296" height="191"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5n-1N-WkM">
+                                <rect key="frame" x="16" y="85" width="343" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="20" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gq1-ty-Adc">
+                                <rect key="frame" x="29" y="304" width="317" height="258"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.45000000000000001"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAJ-Ri-hGK">
+                                <rect key="frame" x="29" y="614" width="317" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="guildDescriptionLabel" destination="Gq1-ty-Adc" id="Pmw-ca-vCi"/>
+                        <outlet property="guildImageView" destination="bwN-tx-Ndd" id="t6a-y7-mSW"/>
+                        <outlet property="guildNameLabel" destination="x5n-1N-WkM" id="Msq-jX-R2h"/>
+                        <outlet property="guildWebsiteLabel" destination="nAJ-Ri-hGK" id="EVw-40-ZbX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2oB-xu-Zg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2254" y="1912"/>
         </scene>
         <!--Brewery List Table View Controller-->
         <scene sceneID="fVO-C5-crg">
