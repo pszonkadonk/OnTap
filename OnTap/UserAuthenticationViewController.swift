@@ -15,9 +15,26 @@ class UserAuthenticationViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
+    @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex
+        {
+        case 0:
+            actionButton.setTitle("Log In", for: .normal)
+        case 1:
+            actionButton.setTitle("Sign Up", for: .normal)
+        default:
+            break
+        }
+
+    }
+    
+
+    
     @IBOutlet weak var actionButton: UIButton!
     
     @IBAction func action(_ sender: UIButton) {
+        
+
         
         if(emailTextField.text != nil && passwordTextField.text != nil) {
             
@@ -31,7 +48,7 @@ class UserAuthenticationViewController: UIViewController {
                     else {
                         // print out error, 
                         if let logError = error?.localizedDescription {
-                            print(logError)
+                            self.alertUser(title: "Error Logging In", message: logError)
                         }
                         else {
                             print("Generic Error")
@@ -50,7 +67,7 @@ class UserAuthenticationViewController: UIViewController {
                     else { //failed to sign up user
                         // print out error,
                         if let logError = error?.localizedDescription {
-                            print(logError)
+                            self.alertUser(title: "Error Signing Up", message: logError)
                         }
                         else {
                             print("Generic Error")
@@ -64,6 +81,8 @@ class UserAuthenticationViewController: UIViewController {
     
 
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -73,6 +92,19 @@ class UserAuthenticationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func alertUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     
 
     /*

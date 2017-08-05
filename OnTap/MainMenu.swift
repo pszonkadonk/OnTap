@@ -14,6 +14,10 @@ class MainMenu: UIViewController {
     
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
+    @IBAction func action(_ sender: UIButton) {
+        try! Auth.auth().signOut()
+        performSegue(withIdentifier: "backToAuthSegue", sender: self )
+    }
     
     
     var menuShowing: Bool = false
@@ -22,7 +26,7 @@ class MainMenu: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(Auth.auth().currentUser?.email)
+//        print(Auth.auth().currentUser?.email)
         
         var count = 1
         while(count < 50) {
