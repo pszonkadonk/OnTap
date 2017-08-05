@@ -1,0 +1,6 @@
+framework module Pods_OnTapTests {
+  umbrella header "Pods-OnTapTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

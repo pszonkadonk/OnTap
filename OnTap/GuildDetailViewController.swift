@@ -32,7 +32,7 @@ class GuildDetailViewController: UIViewController {
         self.guildWebsiteLabel.text = guildWebsite
         
         let guildImageUrl = URL(string: guildImagePath)
-        if guildImagePath != nil {
+        if guildImageUrl != nil {
             let data = try? Data(contentsOf: guildImageUrl!)
             if let imageData = data {
                 self.guildImageView.image = UIImage(data: imageData)
