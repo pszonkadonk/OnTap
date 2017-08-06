@@ -8,12 +8,15 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class UserAuthenticationViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    
+    var dbRef: DatabaseReference? //database reference for users
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex
@@ -33,9 +36,6 @@ class UserAuthenticationViewController: UIViewController {
     @IBOutlet weak var actionButton: UIButton!
     
     @IBAction func action(_ sender: UIButton) {
-        
-
-        
         if(emailTextField.text != nil && passwordTextField.text != nil) {
             
             if(segmentControl.selectedSegmentIndex == 0) { // login selected
@@ -55,13 +55,17 @@ class UserAuthenticationViewController: UIViewController {
                         }
                     }
                 })
-                
-                    
             }
             else {  // sign up user
                 Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                  
                     if(user != nil) { //successfully signed up user
+                        
+                        var newUser: User = User(email: (user?.email)!)
+                        
+                        self.dbRef = Database.database().reference()
+                        self.dbRef?.child("user").childByAutoId().setValue(newUser.mutateUserObject())
+                        
                         self.performSegue(withIdentifier: "mainMenuSegue", sender: self)
                     }
                     else { //failed to sign up user
@@ -81,8 +85,6 @@ class UserAuthenticationViewController: UIViewController {
     
 
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -103,6 +105,8 @@ class UserAuthenticationViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+
     
     
     

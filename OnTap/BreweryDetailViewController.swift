@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class BreweryDetailViewController: UIViewController {
 
@@ -16,6 +17,15 @@ class BreweryDetailViewController: UIViewController {
     @IBOutlet weak var breweryWebsiteLabel: UILabel!
     @IBOutlet weak var breweryImageView: UIImageView!
     @IBOutlet weak var beerListButton: UIButton!
+    
+//    var dbRef: DatabaseReference?
+    
+    
+//    @IBAction func favoriteButton(_ sender: Any) {
+//        dbRef = Database.database().reference()
+//        
+//        dbRef?.child(<#T##pathString: String##String#>)
+//    }
 
     
     var breweryId: String = ""

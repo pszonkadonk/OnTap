@@ -7,6 +7,7 @@ target 'OnTap' do
 
 pod 'Firebase/Core'
 pod 'Firebase/Auth’
+pod 'Firebase/Database’
 
   target 'OnTapTests' do
     inherit! :search_paths
