@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 
 class BreweryDetailViewController: UIViewController {
@@ -18,14 +19,17 @@ class BreweryDetailViewController: UIViewController {
     @IBOutlet weak var breweryImageView: UIImageView!
     @IBOutlet weak var beerListButton: UIButton!
     
-//    var dbRef: DatabaseReference?
+    var dbRef: DatabaseReference?
     
     
-//    @IBAction func favoriteButton(_ sender: Any) {
-//        dbRef = Database.database().reference()
-//        
-//        dbRef?.child(<#T##pathString: String##String#>)
-//    }
+    var currentUser = Auth.auth().currentUser
+    
+    
+    @IBAction func favoriteButton(_ sender: Any) {
+        dbRef = Database.database().reference()
+
+//        dbRef?.child(String)
+    }
 
     
     var breweryId: String = ""
@@ -35,6 +39,9 @@ class BreweryDetailViewController: UIViewController {
     var breweryImagePath: String = ""
     
     override func viewDidLoad() {
+        
+        
+        
         super.viewDidLoad()
         self.breweryDescriptionLabel.text = breweryDescription
         self.breweryWebsiteLabel.text = breweryWebsite
