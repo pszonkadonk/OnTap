@@ -20,15 +20,34 @@ class BreweryDetailViewController: UIViewController {
     @IBOutlet weak var beerListButton: UIButton!
     
     var dbRef: DatabaseReference?
-    
+    var handle: DatabaseHandle?
+//    var db = Database.database()
     
     var currentUser = Auth.auth().currentUser
     
-    
     @IBAction func favoriteButton(_ sender: Any) {
-        dbRef = Database.database().reference()
-
-//        dbRef?.child(String)
+        print(currentUser?.email)
+        dbRef = Database.database().reference(withPath: "user/email/\(currentUser?.email)")
+        
+//        dbRef.set
+        
+        dbRef?.updateChildValues(["favoriteBeers": 5])
+        
+//        var queryRef = dbRef?.child("user").queryOrdered(byChild: "email").queryEqual(toValue: currentUser?.email)
+        
+        
+//        queryRef?.observeSingleEvent(of: .value, with: { (snapshot) in
+//            print("SNAP")
+//            print(snapshot)
+//            
+//            
+//        
+//            if let snapshot.favoriteBreweries as? [[String:Any]] {
+//                var userFavoriteBrewries = snapshot.favoriteBreweries
+//                userFavoriteBrewries
+//            }
+//            
+//        })
     }
 
     
@@ -39,8 +58,6 @@ class BreweryDetailViewController: UIViewController {
     var breweryImagePath: String = ""
     
     override func viewDidLoad() {
-        
-        
         
         super.viewDidLoad()
         self.breweryDescriptionLabel.text = breweryDescription
