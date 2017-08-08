@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class BeerDetailViewController: UIViewController {
     
@@ -18,19 +20,23 @@ class BeerDetailViewController: UIViewController {
     @IBOutlet weak var beerIsOrganicLabel: UILabel!
     @IBOutlet weak var beerDescriptionLabel: UILabel!
     
+    var dbRef: DatabaseReference!
+    var currentUser = Auth.auth().currentUser!
+
     
+    @IBAction func favoriteButton(_ sender: Any) {
+        dbRef = Database.database().reference()
+        self.dbRef.child("user").child(currentUser.uid+"/favoriteBeers/\(self.targetBeer.name)").observeSingleEvent(of: .value, with: { (snapshot) in
+            if(snapshot.exists() == false) { //if not already favorited
+                self.dbRef.child("user").child(self.currentUser.uid+"/favoriteBeers").updateChildValues([self.targetBeer.name:self.targetBeer.id])
+                self.alertUser(title: "Favorited", message: "\(self.targetBeer.name) has been added to your favorites")
+            } else {
+                self.alertUser(title: "Nope", message: "\(self.targetBeer.name) is already in your favorites.")
+            }
+        })
+    }
     
     override func viewDidLoad() {
-        print("ID \(targetBeer.id)")
-        print("NAME \(targetBeer.name)")
-        print("DESCRIPTION \(targetBeer.description)")
-        print("ORGANIC \(targetBeer.isOrganic)")
-        print("ABV \(targetBeer.abv)")
-        print("STYLE \(targetBeer.style)")
-        print("STYLE ID \(targetBeer.styleId)")
-        print("ImagePath \(targetBeer.imagePath)")
-        
-        
         self.beerNameLabel.text = targetBeer.name
         self.beerAbvLabel.text = targetBeer.abv
         self.beerStyleLabel.text = targetBeer.style
@@ -44,9 +50,7 @@ class BeerDetailViewController: UIViewController {
                 self.beerImageView.image = UIImage(data: imageData)
             }
         } else {
-            print("there was no image")
             let filePath = Bundle.main.path(forResource: "placeholder", ofType: "png")
-            print(filePath)
             self.beerImageView.image = UIImage(contentsOfFile: filePath!)
         }
 
@@ -59,14 +63,13 @@ class BeerDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func alertUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
 }

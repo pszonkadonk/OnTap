@@ -19,23 +19,17 @@ class MainMenu: UIViewController {
         performSegue(withIdentifier: "backToAuthSegue", sender: self )
     }
     
-    
     var menuShowing: Bool = false
     var myList = [BreweryLocation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(Auth.auth().currentUser?.email)
-        
         var count = 1
         while(count < 50) {
             loadLocationData(pageNumber: count)
             count+=1
         }
-        
-        
-        
     }
     
     @IBAction func openMenu(_ sender: Any) {

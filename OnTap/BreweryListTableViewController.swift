@@ -8,16 +8,13 @@
 
 import UIKit
 
-class BreweryListTableViewController: UITableViewController, UISearchBarDelegate {
+class BreweryListTableViewController: UITableViewController {
     
     @IBOutlet weak var breweryTableView: UITableView!
-
-    @IBOutlet weak var searchBar: UISearchBar!
     
     var fetchedBrewery = [Brewery]()
     var filteredBrewery = [Brewery]()
     var breweryPageNumber: Int = 1
-    var isSearching: Bool = false
 
     
 
@@ -27,19 +24,11 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         breweryTableView.dataSource = self
         breweryTableView.delegate = self
         
-        searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.done
-        
         fetchBreweries()
         
         breweryTableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         breweryTableView.separatorColor = UIColor .darkGray
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     
@@ -64,10 +53,6 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isSearching {
-            return filteredBrewery.count
-        }
-        // #warning Incomplete implementation, return the number of rows
         return fetchedBrewery.count
     }
     
@@ -121,27 +106,11 @@ class BreweryListTableViewController: UITableViewController, UISearchBarDelegate
         let cell = breweryTableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
         let text: String!
         
-        if isSearching {
-            text = filteredBrewery[indexPath.row].name
-        } else {
-            text = self.fetchedBrewery[indexPath.row].name
-        }
+        text = self.fetchedBrewery[indexPath.row].name
+        
         cell.textLabel?.text = text
         
         return cell
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == nil || searchBar.text == "" {
-            isSearching = false
-            view.endEditing(true)
-            self.breweryTableView.reloadData()
-        } else {
-            filteredBrewery = fetchedBrewery.filter({return $0.name == searchBar.text!})
-            
-            self.isSearching = true
-            
-            breweryTableView.reloadData()
-        }
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

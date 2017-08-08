@@ -23,7 +23,4 @@ class User {
     func mutateUserObject() -> Any {
         return ["email": email, "favoriteBreweries": false, "favoriteBeers": false]
     }
-    
-    
-    
 }

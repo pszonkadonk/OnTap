@@ -23,13 +23,7 @@ class HopsDetailViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
 
         self.hopsNameLabel.text = hopsNameLabelText
-        self.hopsDescriptionLabel.text = hopsDescriptionText
-        
-//        var foo = Array(hopsAttributes[0].values)
-        
-        
-//        print(foo[0])
-        // Do any additional setup after loading the view.
+        self.hopsDescriptionLabel.text = hopsDescriptionText        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,22 +52,6 @@ class HopsDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         cell.textLabel?.text = text
         
-        
-        // Configure the cell...
-        
         return cell
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

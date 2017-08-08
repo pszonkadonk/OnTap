@@ -128,10 +128,5 @@ class GuildListTableViewController: UITableViewController {
             destination.guildWebsite = self.fetchedGuilds[guildIndex].website
             destination.guildImagePath = self.fetchedGuilds[guildIndex].imageUrl
         }
-
-        
-        
      }
- 
-    
 }
