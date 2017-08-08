@@ -64,7 +64,7 @@ class UserAuthenticationViewController: UIViewController {
                         var newUser: User = User(email: (user?.email)!)
                         
                         self.dbRef = Database.database().reference()
-                        self.dbRef?.child("user").childByAutoId().setValue(newUser.mutateUserObject())
+                        self.dbRef?.child("user").child((user?.uid)!).setValue(newUser.mutateUserObject())
                         
                         self.performSegue(withIdentifier: "mainMenuSegue", sender: self)
                     }

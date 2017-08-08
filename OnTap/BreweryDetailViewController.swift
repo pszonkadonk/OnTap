@@ -19,44 +19,29 @@ class BreweryDetailViewController: UIViewController {
     @IBOutlet weak var breweryImageView: UIImageView!
     @IBOutlet weak var beerListButton: UIButton!
     
-    var dbRef: DatabaseReference?
-    var handle: DatabaseHandle?
-//    var db = Database.database()
-    
-    var currentUser = Auth.auth().currentUser
-    
-    @IBAction func favoriteButton(_ sender: Any) {
-        print(currentUser?.email)
-        dbRef = Database.database().reference(withPath: "user/email/\(currentUser?.email)")
-        
-//        dbRef.set
-        
-        dbRef?.updateChildValues(["favoriteBeers": 5])
-        
-//        var queryRef = dbRef?.child("user").queryOrdered(byChild: "email").queryEqual(toValue: currentUser?.email)
-        
-        
-//        queryRef?.observeSingleEvent(of: .value, with: { (snapshot) in
-//            print("SNAP")
-//            print(snapshot)
-//            
-//            
-//        
-//            if let snapshot.favoriteBreweries as? [[String:Any]] {
-//                var userFavoriteBrewries = snapshot.favoriteBreweries
-//                userFavoriteBrewries
-//            }
-//            
-//        })
-    }
-
-    
     var breweryId: String = ""
     var breweryName: String = ""
     var breweryWebsite: String = ""
     var breweryDescription: String = ""
     var breweryImagePath: String = ""
     
+    
+    var dbRef: DatabaseReference!    
+    var currentUser = Auth.auth().currentUser!
+    
+    @IBAction func favoriteButton(_ sender: Any) {
+        
+        dbRef = Database.database().reference()
+        self.dbRef.child("user").child(currentUser.uid+"/favoriteBreweries/\(self.breweryName)").observeSingleEvent(of: .value, with: { (snapshot) in
+            if(snapshot.exists() == false) { //if not already favorited
+                self.dbRef.child("user").child(self.currentUser.uid+"/favoriteBreweries").updateChildValues([self.breweryName:self.breweryId])
+                self.alertUser(title: "Favorited", message: "\(self.breweryName) has been added to your favorites")
+            } else {
+                self.alertUser(title: "Nope", message: "\(self.breweryName) is already in your favorites.")
+            }
+        })
+    }
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -89,9 +74,18 @@ class BreweryDetailViewController: UIViewController {
             let destination = segue.destination as? BreweryBeerListTableViewController
             destination?.breweryId = self.breweryId
         }
-        
-        
     }
+    
+    func alertUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
     
 
 }
