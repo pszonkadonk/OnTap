@@ -87,6 +87,44 @@
             </objects>
             <point key="canvasLocation" x="917.60000000000002" y="138.98050974512745"/>
         </scene>
+        <!--Beer Search Table View Controller-->
+        <scene sceneID="ZUo-v4-e8h">
+            <objects>
+                <tableViewController id="VKx-TS-N88" customClass="BeerSearchTableViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aYJ-Gg-Wlz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Search for a Beer" textAlignment="natural" minimumFontSize="17" id="lWu-x1-cZS">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="searchBeer:" destination="VKx-TS-N88" eventType="primaryActionTriggered" id="INc-kC-MFm"/>
+                            </connections>
+                        </textField>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6Qp-rD-cfc">
+                                <rect key="frame" x="0.0" y="73" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Qp-rD-cfc" id="4VL-Rn-q1Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VKx-TS-N88" id="hou-2f-mHE"/>
+                            <outlet property="delegate" destination="VKx-TS-N88" id="RAG-hN-3UN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0m-7F-Ely" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3320.8000000000002" y="-580.65967016491754"/>
+        </scene>
         <!--MainMenu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -171,6 +209,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <segue destination="VKx-TS-N88" kind="show" identifier="beerSearchSegue" id="eHw-mK-Km2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-KM-C94">
                                         <rect key="frame" x="34" y="310" width="120" height="72"/>
