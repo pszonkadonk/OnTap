@@ -106,13 +106,16 @@
                             </connections>
                         </textField>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6Qp-rD-cfc">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="beerSearchCell" id="6Qp-rD-cfc">
                                 <rect key="frame" x="0.0" y="73" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Qp-rD-cfc" id="4VL-Rn-q1Q">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="dWS-NU-5Tg" kind="show" identifier="beerDetailSegue" id="9TE-qL-5RT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -120,10 +123,14 @@
                             <outlet property="delegate" destination="VKx-TS-N88" id="RAG-hN-3UN"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="beerSearchTableView" destination="aYJ-Gg-Wlz" id="7H3-Aa-iUO"/>
+                        <outlet property="searchBarTextField" destination="lWu-x1-cZS" id="9Zu-vq-bZl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0m-7F-Ely" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3320.8000000000002" y="-580.65967016491754"/>
+            <point key="canvasLocation" x="4151" y="-610"/>
         </scene>
         <!--MainMenu-->
         <scene sceneID="tne-QT-ifu">
@@ -898,4 +905,7 @@
             <point key="canvasLocation" x="2381.5999999999999" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9TE-qL-5RT"/>
+    </inferredMetricsTieBreakers>
 </document>

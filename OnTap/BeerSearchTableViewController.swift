@@ -10,8 +10,18 @@ import UIKit
 
 class BeerSearchTableViewController: UITableViewController {
 
+    @IBOutlet weak var searchBarTextField: UITextField!
+    @IBOutlet weak var beerSearchTableView: UITableView!
+    
+    var fetchedBeers = [Beer]()
+    var beerPageNumber: Int = 1
+    
+    
     @IBAction func searchBeer(_ sender: Any) {
-        print("You tried to search for a beer")
+        
+        fetchedBeers.removeAll()
+        queryBeers()
+        
     }
     
     override func viewDidLoad() {
@@ -27,67 +37,116 @@ class BeerSearchTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return fetchedBeers.count
+    }
+    
+    
+    func queryBeers(page: Int = 1) {
+        guard let url = URL(string: "http://api.brewerydb.com/v2/search?q=\(searchBarTextField.text!)&type=beer&p=\(self.beerPageNumber)&key=6ac28fb2b6b8ea4081184e492e5462d8")
+            else {return }
+
+        print(url)
+        let session = URLSession.shared
+        session.dataTask(with: url) {(data, response, error) in
+            if let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+                        if let searchedBeers = json["data"] as? [[String: Any]] { //core data
+                            for beer in searchedBeers {
+                                let newBeer = Beer()
+                                if let newBeerId = beer["id"] as? String {
+                                    newBeer.id = newBeerId
+                                }
+                                if let newBeerName = beer["name"] as? String {
+                                    newBeer.name = newBeerName
+                                    print(newBeer.name)
+                                }
+                                if let isOrganic = beer["isOrganic"] as? String {
+                                    newBeer.isOrganic = isOrganic
+                                }
+                                if let beerLabels = beer["labels"] as? [String:Any] { //label data
+                                    if let beerLabel = beerLabels["medium"] as? String {
+                                        newBeer.imagePath = beerLabel
+                                    }
+                                }
+                                if let beerStyle = beer["style"] as? [String:Any] { //style data
+                                    if let beerABV = beerStyle["abvMax"] as? String {
+                                        newBeer.abv = beerABV
+                                    }
+                                    if let beerDescription = beerStyle["description"] as? String {
+                                        newBeer.description = beerDescription
+                                    }
+                                    if let style = beerStyle["shortName"] as? String {
+                                        newBeer.style = style
+                                    }
+                                    if let styleId = beerStyle["id"] as? String {
+                                        newBeer.styleId = styleId
+                                    }
+                                }
+                                self.fetchedBeers.append(newBeer)
+                            }
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            if(self.fetchedBeers.count == 0) {
+                DispatchQueue.main.async(execute: {
+                    self.alertUser(title: "No Data", message: "There are no search results for \(self.searchBarTextField.text!)")
+                })
+            }
+        self.beerSearchTableView.reloadData()
+        self.beerPageNumber += 1
+        }.resume()
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "beerSearchCell", for: indexPath)
 
-        // Configure the cell...
-
+        let text: String!
+        text = fetchedBeers[indexPath.row].name
+        cell.textLabel?.text = text
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        var isLoadingNewData: Bool = false
+        
+        if scrollView == beerSearchTableView {
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+                if !isLoadingNewData {
+                    isLoadingNewData = true
+                    queryBeers()
+                }
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "beerDetailSegue",
+            let destination = segue.destination as? BeerDetailViewController,
+            let beerIndex = self.beerSearchTableView.indexPathForSelectedRow?.row
+        {
+            destination.targetBeer = self.fetchedBeers[beerIndex]
+        }
     }
-    */
+    
+    func alertUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+ 
 
 }
