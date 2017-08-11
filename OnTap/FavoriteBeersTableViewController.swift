@@ -17,11 +17,8 @@ class FavoriteBeersTableViewController: UITableViewController {
     var currentUser = Auth.auth().currentUser!
     var favoriteBeers = [Beer]()
     @IBOutlet weak var favoriteBeerTableView: UITableView!
-    
-    @IBOutlet var removeButton: [UIButton]!
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         fetchFavoriteBeers()
     }
@@ -50,8 +47,7 @@ class FavoriteBeersTableViewController: UITableViewController {
         let text: String!
         text = self.favoriteBeers[indexPath.row].name
         cell.textLabel?.text = text
-        
-        
+
         return cell
     }
     
@@ -67,7 +63,6 @@ class FavoriteBeersTableViewController: UITableViewController {
                 }
             }
             DispatchQueue.main.async(execute: {
-                print(self.favoriteBeers.count)
                 self.favoriteBeerTableView.reloadData()
             })
         })
@@ -83,7 +78,7 @@ class FavoriteBeersTableViewController: UITableViewController {
             
             self.dbRef.child("user").child(currentUser.uid+"/favoriteBeers/")
                 .child(beerName).removeValue(completionBlock: { (error, dbRef) in
-                    if(error != nil) { //failed to beer
+                    if(error != nil) { //failed to removebeer
                          return
                     }
                     
@@ -93,8 +88,6 @@ class FavoriteBeersTableViewController: UITableViewController {
                     // delete the table view row
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 })
-            
-            
         }
     }
 

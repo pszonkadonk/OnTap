@@ -87,6 +87,37 @@
             </objects>
             <point key="canvasLocation" x="917.60000000000002" y="138.98050974512745"/>
         </scene>
+        <!--Favorite Brewery Table View Controller-->
+        <scene sceneID="Wxl-c7-sml">
+            <objects>
+                <tableViewController id="I98-bN-wx8" customClass="FavoriteBreweryTableViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eaX-Tw-DGK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteBreweryCell" id="dD7-ik-DJQ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dD7-ik-DJQ" id="If9-cJ-OMr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="I98-bN-wx8" id="VSF-W6-cWt"/>
+                            <outlet property="delegate" destination="I98-bN-wx8" id="R07-tN-Tl8"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="favoriteBreweryTableView" destination="eaX-Tw-DGK" id="pmb-Tx-Kn4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7l-ot-lEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3161" y="-568"/>
+        </scene>
         <!--Beer Search Table View Controller-->
         <scene sceneID="ZUo-v4-e8h">
             <objects>
@@ -157,6 +188,9 @@
                                 <state key="normal" title="Favorite Breweries">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="I98-bN-wx8" kind="show" id="w4N-BY-ySg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diX-Ij-jad">
                                 <rect key="frame" x="27" y="282" width="143" height="102"/>
@@ -918,7 +952,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CYq-rl-UCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2381.5999999999999" y="-576.1619190404798"/>
+            <point key="canvasLocation" x="2106" y="-568"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7gV-GQ-OcJ">

@@ -37,6 +37,7 @@
 		75D3469E1EFDF70400E446C9 /* BreweryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3469D1EFDF70400E446C9 /* BreweryListTableViewController.swift */; };
 		75D3779E1F376B2200FD7BF0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3779D1F376B2200FD7BF0 /* User.swift */; };
 		75E61C131F361A92001660F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75E61C121F361A92001660F6 /* GoogleService-Info.plist */; };
+		75EEA9A21F3D475600847507 /* FavoriteBreweryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEA9A11F3D475600847507 /* FavoriteBreweryTableViewController.swift */; };
 		75F80EDD1F1BD28900EB27DB /* BreweryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80EDC1F1BD28900EB27DB /* BreweryMapViewController.swift */; };
 		75F80EDF1F1BD4E700EB27DB /* BreweryLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80EDE1F1BD4E700EB27DB /* BreweryLocation.swift */; };
 		75F80EE11F1BD64E00EB27DB /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80EE01F1BD64E00EB27DB /* VCMapView.swift */; };
@@ -88,6 +89,7 @@
 		75D3469D1EFDF70400E446C9 /* BreweryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryListTableViewController.swift; sourceTree = "<group>"; };
 		75D3779D1F376B2200FD7BF0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		75E61C121F361A92001660F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		75EEA9A11F3D475600847507 /* FavoriteBreweryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteBreweryTableViewController.swift; sourceTree = "<group>"; };
 		75F80EDC1F1BD28900EB27DB /* BreweryMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryMapViewController.swift; sourceTree = "<group>"; };
 		75F80EDE1F1BD4E700EB27DB /* BreweryLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryLocation.swift; sourceTree = "<group>"; };
 		75F80EE01F1BD64E00EB27DB /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				7578115C1EF9FF6800D102AB /* MainMenu.swift */,
 				7585DA371F05DF9F0076DE7B /* BreweryBeerListTableViewController.swift */,
 				7578115E1EF9FF6800D102AB /* Main.storyboard */,
+				75EEA9A11F3D475600847507 /* FavoriteBreweryTableViewController.swift */,
 				751907B71F3BFC4900967A12 /* FavoriteBeersTableViewController.swift */,
 				754EA9151F3621F600A84753 /* UserAuthenticationViewController.swift */,
 				75925BC31F355D4A00E2A4C7 /* GuildDetailViewController.swift */,
@@ -459,6 +462,7 @@
 				75F80EDF1F1BD4E700EB27DB /* BreweryLocation.swift in Sources */,
 				751630BB1F39684800ABDFEC /* BeerSearchTableViewController.swift in Sources */,
 				75925BC41F355D4A00E2A4C7 /* GuildDetailViewController.swift in Sources */,
+				75EEA9A21F3D475600847507 /* FavoriteBreweryTableViewController.swift in Sources */,
 				751806791F3146FC0002821D /* BeerStyleTableTableViewController.swift in Sources */,
 				756686041F28281D0017D5CF /* Hops.swift in Sources */,
 				756686021F28257D0017D5CF /* HopListTableViewController.swift in Sources */,
