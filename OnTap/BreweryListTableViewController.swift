@@ -24,7 +24,8 @@ class BreweryListTableViewController: UITableViewController {
         breweryTableView.dataSource = self
         breweryTableView.delegate = self
         
-        fetchBreweries()
+        self.fetchBreweries()
+
         
         breweryTableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         breweryTableView.separatorColor = UIColor .darkGray
@@ -96,7 +97,9 @@ class BreweryListTableViewController: UITableViewController {
             } catch {
                 print(error)
             }
-        self.breweryTableView.reloadData()
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.breweryTableView.reloadData()
+            })
         self.breweryPageNumber += 1
         }
     }.resume()

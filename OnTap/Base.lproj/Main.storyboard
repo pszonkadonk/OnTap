@@ -130,7 +130,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0m-7F-Ely" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4151" y="-610"/>
+            <point key="canvasLocation" x="4149.6000000000004" y="-610.34482758620697"/>
         </scene>
         <!--MainMenu-->
         <scene sceneID="tne-QT-ifu">
@@ -165,6 +165,9 @@
                                 <state key="normal" title="Favorite Beers">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="UGz-th-8JJ" kind="show" identifier="favoriteBeersSegue" id="eJ0-fr-9xq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bk-QL-uvG">
                                 <rect key="frame" x="116" y="461" width="143" height="51"/>
@@ -885,6 +888,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Pr-n6-4cW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4" y="139"/>
+        </scene>
+        <!--Favorite Beers Table View Controller-->
+        <scene sceneID="C5U-0H-ZB7">
+            <objects>
+                <tableViewController id="UGz-th-8JJ" customClass="FavoriteBeersTableViewController" customModule="OnTap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Js1-wt-bfo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteBeerCell" id="FRQ-4C-rZB">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FRQ-4C-rZB" id="sQa-SB-swl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UGz-th-8JJ" id="pYD-7M-kOD"/>
+                            <outlet property="delegate" destination="UGz-th-8JJ" id="sVu-O3-DVl"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="favoriteBeerTableView" destination="Js1-wt-bfo" id="gNP-Lz-DE5"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CYq-rl-UCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2381.5999999999999" y="-576.1619190404798"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7gV-GQ-OcJ">
