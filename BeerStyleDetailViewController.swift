@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class BeerStyleDetailViewController: UIViewController {
     
@@ -20,10 +21,13 @@ class BeerStyleDetailViewController: UIViewController {
         
         super.viewDidLoad()
 
-        print(beerStyleName)
-        print(beerStyleDescription)
         beerStyleNameLabel.text = beerStyleName
+        beerStyleNameLabel.textColor = UIColor.flatWhite
+        beerStyleNameLabel.textAlignment = NSTextAlignment.center
         beerStyleDescriptionLabel.text = beerStyleDescription
+        beerStyleDescriptionLabel.textColor = UIColor.flatWhite
+        beerStyleDescriptionLabel.textAlignment = NSTextAlignment.center
+
         
 
         // Do any additional setup after loading the view.

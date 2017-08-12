@@ -14,6 +14,9 @@ class MainMenu: UIViewController {
     
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var favoriteBreweryButton: UIButton!
+    @IBOutlet weak var favoriteBeerButton: UIButton!
     @IBAction func action(_ sender: UIButton) {
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "backToAuthSegue", sender: self )
@@ -23,6 +26,19 @@ class MainMenu: UIViewController {
     var myList = [BreweryLocation]()
     
     override func viewDidLoad() {
+        
+        logoutButton.layer.cornerRadius = 5
+        logoutButton.layer.borderWidth = 1
+        favoriteBreweryButton.layer.cornerRadius = 5
+        favoriteBreweryButton.layer.borderWidth = 1
+        favoriteBeerButton.layer.cornerRadius = 5
+        favoriteBeerButton.layer.borderWidth = 1
+
+        
+        
+        
+        
+        
         super.viewDidLoad()
         
         var count = 1

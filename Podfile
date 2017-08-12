@@ -9,6 +9,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth’
 pod 'Firebase/Database’
 pod 'Alamofire', '~> 4.4'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
   target 'OnTapTests' do
     inherit! :search_paths

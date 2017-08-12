@@ -14,10 +14,11 @@ class BreweryDetailViewController: UIViewController {
 
     @IBOutlet weak var breweryDetailView: UIView!
     @IBOutlet weak var breweryNameLabel: UILabel!
-    @IBOutlet weak var breweryDescriptionLabel: UILabel!
     @IBOutlet weak var breweryWebsiteLabel: UILabel!
     @IBOutlet weak var breweryImageView: UIImageView!
     @IBOutlet weak var beerListButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var breweryDescriptionLabel: UILabel!
     
     var breweryId: String = ""
     var breweryName: String = ""
@@ -44,20 +45,29 @@ class BreweryDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         
-        super.viewDidLoad()
+        favoriteButton.layer.cornerRadius = 5
+        favoriteButton.layer.borderWidth = 1
+        beerListButton.layer.cornerRadius = 5
+        beerListButton.layer.borderWidth = 1
+        
+        breweryDescriptionLabel.textColor = UIColor.flatWhite
+        breweryWebsiteLabel.textColor = UIColor.flatWhite
         self.breweryDescriptionLabel.text = breweryDescription
         self.breweryWebsiteLabel.text = breweryWebsite
-        
+    
         let breweryImageUrl = URL(string: breweryImagePath)
         if breweryImageUrl != nil {
             let data = try? Data(contentsOf: breweryImageUrl!)
             if let imageData = data {
                 self.breweryImageView.image = UIImage(data: imageData)
+                breweryImageView.layer.borderWidth = 1.0
+                breweryImageView.layer.borderColor = UIColor.black.cgColor
             }
         } else {
             self.breweryNameLabel.text = breweryName
         }
-
+        
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {

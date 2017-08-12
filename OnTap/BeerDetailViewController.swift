@@ -20,6 +20,7 @@ class BeerDetailViewController: UIViewController {
     @IBOutlet weak var beerIsOrganicLabel: UILabel!
     @IBOutlet weak var beerDescriptionLabel: UILabel!
     
+    @IBOutlet weak var favoriteButton: UIButton!
     var dbRef: DatabaseReference!
     var currentUser = Auth.auth().currentUser!
 
@@ -42,6 +43,20 @@ class BeerDetailViewController: UIViewController {
         self.beerStyleLabel.text = targetBeer.style
         self.beerIsOrganicLabel.text = targetBeer.isOrganic
         self.beerDescriptionLabel.text = targetBeer.description
+        
+        favoriteButton.layer.cornerRadius = 5
+        favoriteButton.layer.borderWidth = 1
+        
+        beerImageView.layer.borderWidth = 1.0
+        beerImageView.layer.borderColor = UIColor.black.cgColor
+        
+        beerAbvLabel.textColor = UIColor.flatWhite
+        beerStyleLabel.textColor = UIColor.flatWhite
+        beerIsOrganicLabel.textColor = UIColor.flatWhite
+        
+        beerAbvLabel.textAlignment = NSTextAlignment.center
+        beerStyleLabel.textAlignment = NSTextAlignment.center
+        beerIsOrganicLabel.textAlignment = NSTextAlignment.center
         
         if(targetBeer.imagePath != "") {
             let beerImageUrl = URL(string: targetBeer.imagePath)

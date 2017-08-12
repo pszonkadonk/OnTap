@@ -47,9 +47,26 @@ class BeerStyleTableTableViewController: UITableViewController {
         
         text = self.fetchedBeerStyles[indexPath.row].name
         cell.textLabel?.text = text
+        cell.backgroundColor = UIColor.flatSkyBlue
+        cell.textLabel?.textColor = UIColor.flatWhite
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatOrange
+        cell?.backgroundColor = UIColor.flatOrange
+        cell?.accessoryView?.backgroundColor = UIColor.flatOrange
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatSkyBlue
+        cell?.backgroundColor = UIColor.flatSkyBlue
+        cell?.accessoryView?.backgroundColor = UIColor.flatSkyBlue
+    }
+
  
     func fetchBeerStyles() {
         Alamofire.request("http://api.brewerydb.com/v2/styles/?key=6ac28fb2b6b8ea4081184e492e5462d8").responseJSON { response in
@@ -72,8 +89,6 @@ class BeerStyleTableTableViewController: UITableViewController {
         self.beerStyleTableView.reloadData()
         }
     }
-
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beerStyleDetailSegue",

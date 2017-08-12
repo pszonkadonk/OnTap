@@ -92,6 +92,8 @@ class BreweryListTableViewController: UITableViewController {
         text = self.fetchedBrewery[indexPath.row].name
         
         cell.textLabel?.text = text
+        cell.backgroundColor = UIColor.flatSkyBlue
+        cell.textLabel?.textColor = UIColor.flatWhite
         
         return cell
     }
@@ -107,6 +109,20 @@ class BreweryListTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatOrange
+        cell?.backgroundColor = UIColor.flatOrange
+        cell?.accessoryView?.backgroundColor = UIColor.flatOrange
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatSkyBlue
+        cell?.backgroundColor = UIColor.flatSkyBlue
+        cell?.accessoryView?.backgroundColor = UIColor.flatSkyBlue
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

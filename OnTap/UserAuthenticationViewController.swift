@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import ChameleonFramework
 
 class UserAuthenticationViewController: UIViewController {
     
@@ -16,7 +17,17 @@ class UserAuthenticationViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
+    @IBOutlet weak var ontapHeaderLabel: UILabel!
+    let strokeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName: UIColor.flatOrange,
+        NSStrokeWidthAttributeName : -3.0,
+        NSFontAttributeName : UIFont.boldSystemFont(ofSize: 47)
+        ] as [String : Any]
+
     var dbRef: DatabaseReference? //database reference for users
+    
+    @IBOutlet weak var userAuthenticationView: UIView!
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex
@@ -83,6 +94,22 @@ class UserAuthenticationViewController: UIViewController {
     
 
     override func viewDidLoad() {
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName: UIColor.flatWhite])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.flatWhite])
+        emailTextField.layer.borderColor = UIColor.black.cgColor
+        passwordTextField.layer.borderColor = UIColor.black.cgColor
+        emailTextField.layer.borderWidth = 1.0
+        passwordTextField.layer.borderWidth = 1.0
+        actionButton.layer.cornerRadius = 5
+        actionButton.layer.borderWidth = 1
+        segmentControl.layer.borderWidth = 1.0
+        segmentControl.layer.borderColor = UIColor.black.cgColor
+        
+        ontapHeaderLabel.attributedText = NSMutableAttributedString(string: "Welcome to OnTap!", attributes: strokeTextAttributes)
+
+        
+
+
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -103,4 +130,6 @@ class UserAuthenticationViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
 }

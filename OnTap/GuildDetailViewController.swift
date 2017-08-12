@@ -23,6 +23,16 @@ class GuildDetailViewController: UIViewController {
     var guildImagePath: String = ""
 
     override func viewDidLoad() {
+        
+        guildNameLabel.textColor = UIColor.flatWhite
+        guildNameLabel.textAlignment = NSTextAlignment.center
+        guildDescriptionLabel.textColor = UIColor.flatWhite
+        guildDescriptionLabel.textAlignment = NSTextAlignment.center
+        guildWebsiteLabel.textColor = UIColor.flatWhite
+        guildWebsiteLabel.textAlignment = NSTextAlignment.center
+
+        
+        
         super.viewDidLoad()
         
         self.guildDescriptionLabel.text = guildDescription
@@ -33,6 +43,8 @@ class GuildDetailViewController: UIViewController {
             let data = try? Data(contentsOf: guildImageUrl!)
             if let imageData = data {
                 self.guildImageView.image = UIImage(data: imageData)
+                guildImageView.layer.borderWidth = 1.0
+                guildImageView.layer.borderColor = UIColor.black.cgColor
             }
         } else {
             self.guildNameLabel.text = guildName

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import ChameleonFramework
 
 class BreweryBeerListTableViewController: UITableViewController {
 
@@ -43,70 +45,73 @@ class BreweryBeerListTableViewController: UITableViewController {
     }
     
     func fetchedBeers() {
-        
-        guard let url = URL(string: "http://api.brewerydb.com/v2/brewery/\(breweryId)/beers/?key=6ac28fb2b6b8ea4081184e492e5462d8") else {return}
-        
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
-           if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let beerList = json["data"] as? [[String: Any]] { //core data
-                            for beer in beerList {
-                                let newBeer = Beer()
-                                if let newBeerId = beer["id"] as? String {
-                                    newBeer.id = newBeerId
-                                }
-                                if let newBeerName = beer["name"] as? String {
-                                    newBeer.name = newBeerName
-                                }
-                                if let isOrganic = beer["isOrganic"] as? String {
-                                    newBeer.isOrganic = isOrganic
-                                }
-                                if let beerLabels = beer["labels"] as? [String:Any] { //label data
-                                    if let beerLabel = beerLabels["medium"] as? String {
-                                        newBeer.imagePath = beerLabel
-                                    }
-                                }
-                                if let beerStyle = beer["style"] as? [String:Any] { //style data
-                                    if let beerABV = beerStyle["abvMax"] as? String {
-                                        newBeer.abv = beerABV
-                                    }
-                                    if let beerDescription = beerStyle["description"] as? String {
-                                        newBeer.description = beerDescription
-                                    }
-                                    if let style = beerStyle["shortName"] as? String {
-                                        newBeer.style = style
-                                    }
-                                    if let styleId = beerStyle["id"] as? String {
-                                        newBeer.styleId = styleId
-                                    }
-                                }
-                                self.fetchedBeerList.append(newBeer)
-                            }
+        Alamofire.request("http://api.brewerydb.com/v2/brewery/\(breweryId)/beers/?key=6ac28fb2b6b8ea4081184e492e5462d8").responseJSON { response in
+
+        if let json = response.result.value as? [String:Any] {
+            if let beerList = json["data"] as? [[String:Any]] { //core data
+                for beer in beerList {
+                    let newBeer = Beer()
+                    if let newBeerId = beer["id"] as? String {
+                        newBeer.id = newBeerId
+                    }
+                    if let newBeerName = beer["name"] as? String {
+                        newBeer.name = newBeerName
+                    }
+                    if let isOrganic = beer["isOrganic"] as? String {
+                        newBeer.isOrganic = isOrganic
+                    }
+                    if let beerLabels = beer["labels"] as? [String:Any] { //label data
+                        if let beerLabel = beerLabels["medium"] as? String {
+                            newBeer.imagePath = beerLabel
                         }
                     }
-                } catch {
-                    print(error)
+                    if let beerStyle = beer["style"] as? [String:Any] { //style data
+                        if let beerABV = beerStyle["abvMax"] as? String {
+                            newBeer.abv = beerABV
+                        }
+                        if let beerDescription = beerStyle["description"] as? String {
+                            newBeer.description = beerDescription
+                        }
+                        if let style = beerStyle["shortName"] as? String {
+                            newBeer.style = style
+                        }
+                        if let styleId = beerStyle["id"] as? String {
+                            newBeer.styleId = styleId
+                        }
+                    }
+                    self.fetchedBeerList.append(newBeer)
                 }
             }
         self.beerListTableView.reloadData()
-    }.resume()
+        }
+    }
 }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = beerListTableView.dequeueReusableCell(withIdentifier: "beerCell", for: indexPath)
-        
         let text: String!
         
         text = fetchedBeerList[indexPath.row].name
-        
         cell.textLabel?.text = text
-        // Configure the cell...
-
+        cell.backgroundColor = UIColor.flatSkyBlue
+        cell.textLabel?.textColor = UIColor.white
+        
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatOrange
+        cell?.backgroundColor = UIColor.flatOrange
+        cell?.accessoryView?.backgroundColor = UIColor.flatOrange
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatSkyBlue
+        cell?.backgroundColor = UIColor.flatSkyBlue
+        cell?.accessoryView?.backgroundColor = UIColor.flatSkyBlue
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

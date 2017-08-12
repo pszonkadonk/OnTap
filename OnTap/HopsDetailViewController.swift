@@ -20,6 +20,7 @@ class HopsDetailViewController: UIViewController, UITableViewDataSource, UITable
     var hopsAttributes = [[String:Int]]()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         self.hopsNameLabel.text = hopsNameLabelText
@@ -51,6 +52,8 @@ class HopsDetailViewController: UIViewController, UITableViewDataSource, UITable
         text = key + " : " + String(value)
         
         cell.textLabel?.text = text
+        cell.backgroundColor = UIColor.flatSkyBlue
+        cell.textLabel?.textColor = UIColor.flatWhite
         
         return cell
     }
