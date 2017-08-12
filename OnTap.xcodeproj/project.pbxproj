@@ -177,6 +177,7 @@
 				75EEA9A11F3D475600847507 /* FavoriteBreweryTableViewController.swift */,
 				751907B71F3BFC4900967A12 /* FavoriteBeersTableViewController.swift */,
 				754EA9151F3621F600A84753 /* UserAuthenticationViewController.swift */,
+				751630BA1F39684800ABDFEC /* BeerSearchTableViewController.swift */,
 				75925BC31F355D4A00E2A4C7 /* GuildDetailViewController.swift */,
 				75925BC11F35559700E2A4C7 /* GuildListTableViewController.swift */,
 				75925BBF1F35528600E2A4C7 /* Guild.swift */,
@@ -194,7 +195,6 @@
 				75F80EDE1F1BD4E700EB27DB /* BreweryLocation.swift */,
 				7585DA391F05E0D50076DE7B /* Beer.swift */,
 				756686031F28281D0017D5CF /* Hops.swift */,
-				751630BA1F39684800ABDFEC /* BeerSearchTableViewController.swift */,
 			);
 			path = OnTap;
 			sourceTree = "<group>";
@@ -404,12 +404,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-OnTap/Pods-OnTap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",

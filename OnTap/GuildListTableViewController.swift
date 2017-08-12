@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class GuildListTableViewController: UITableViewController {
     
@@ -21,11 +22,8 @@ class GuildListTableViewController: UITableViewController {
         
         guildListTableView.dataSource = self
         guildListTableView.delegate = self
-        
         fetchGuilds()
-        
         super.viewDidLoad()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,51 +57,36 @@ class GuildListTableViewController: UITableViewController {
     }
     
     func fetchGuilds(page:Int=1) {
-        guard let url = URL(string: "http://api.brewerydb.com/v2/guilds/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.guildPageNumber)")
-            else {return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
-            
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let guilds = json["data"] as? [[String:Any]] {
-                            for guild in guilds {
-                                let newGuild = Guild()
-                                if let guildId = guild["id"] as? String {
-                                    newGuild.id = guildId
-                                }
-                                
-                                if let guildName = guild["name"] as? String {
-                                    newGuild.name = guildName
-                                }
-                                
-                                if let guildDescription = guild["description"] as? String {
-                                    newGuild.description = guildDescription
-                                }
-                                if let guildWebsite = guild["website"] as? String {
-                                    newGuild.website = guildWebsite
-                                }
-                                
-                                if let guildImages = guild["images"] as? [String:String] {
-                                    let guildImagePath = guildImages["medium"]
-                                    newGuild.imageUrl = guildImagePath!
-                                }
-                                self.fetchedGuilds.append(newGuild)
-                            }
+        Alamofire.request("http://api.brewerydb.com/v2/guilds/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.guildPageNumber)").responseJSON { response in
+            if let json = response.result.value as? [String:Any] {
+                if let guilds = json["data"] as? [[String:Any]] {
+                    for guild in guilds {
+                        let newGuild = Guild()
+                        if let guildId = guild["id"] as? String {
+                            newGuild.id = guildId
                         }
+                                
+                        if let guildName = guild["name"] as? String {
+                            newGuild.name = guildName
+                        }
+                                
+                        if let guildDescription = guild["description"] as? String {
+                            newGuild.description = guildDescription
+                        }
+                        if let guildWebsite = guild["website"] as? String {
+                            newGuild.website = guildWebsite
+                        }
+                        if let guildImages = guild["images"] as? [String:String] {
+                            let guildImagePath = guildImages["medium"]
+                            newGuild.imageUrl = guildImagePath!
+                        }
+                        self.fetchedGuilds.append(newGuild)
                     }
-                } catch {
-                    print(error)
                 }
-                DispatchQueue.main.async(execute: {
-                    self.guildListTableView.reloadData()
-                    self.guildPageNumber += 1
-                })
-
+            self.guildListTableView.reloadData()
+            self.guildPageNumber += 1
             }
-            }.resume()
+        }
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

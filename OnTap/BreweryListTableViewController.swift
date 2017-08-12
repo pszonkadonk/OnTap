@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BreweryListTableViewController: UITableViewController {
     
@@ -17,7 +18,6 @@ class BreweryListTableViewController: UITableViewController {
     var breweryPageNumber: Int = 1
 
     
-
     override func viewDidLoad() {
         breweryTableView.dataSource = self
         breweryTableView.delegate = self
@@ -51,54 +51,40 @@ class BreweryListTableViewController: UITableViewController {
     }
     
     func fetchBreweries(page:Int=1) {
-
-        guard let url = URL(string: "http://api.brewerydb.com/v2/breweries/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.breweryPageNumber)")
-            else {return }
-
-        let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
-
-        if let data = data {
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                    if let breweries = json["data"] as? [[String:Any]] {
-                        for brewery in breweries {
-                            let newBrewery = Brewery()
-                            if let breweryId = brewery["id"] as? String {
-                                newBrewery.id = breweryId
-                            }
-                            
-                            if let breweryName = brewery["name"] as? String {
-                                newBrewery.name = breweryName
-                            }
-                            
-                            if let breweryWebsite = brewery["website"] as? String {
-                                newBrewery.website = breweryWebsite
-                            }
-                            if let breweryDescription = brewery["description"] as? String {
-                                newBrewery.breweryDescription = breweryDescription
-                            }
-                            
-                            if let breweryImages = brewery["images"] as? [String:String] {
-                                let breweryImagePath = breweryImages["squareMedium"]
-                                newBrewery.imagePath = breweryImagePath!
-                            }
-                            print(newBrewery.name)
-                            self.fetchedBrewery.append(newBrewery)
+        Alamofire.request("http://api.brewerydb.com/v2/breweries/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.breweryPageNumber)").responseJSON { response in
+            if let json = response.result.value as? [String:Any] {
+                if let breweries = json["data"] as? [[String:Any]] {
+                    for brewery in breweries {
+                        let newBrewery = Brewery()
+                        if let breweryId = brewery["id"] as? String {
+                            newBrewery.id = breweryId
                         }
+                        
+                        if let breweryName = brewery["name"] as? String {
+                            newBrewery.name = breweryName
+                        }
+                        
+                        if let breweryWebsite = brewery["website"] as? String {
+                            newBrewery.website = breweryWebsite
+                        }
+                        if let breweryDescription = brewery["description"] as? String {
+                            newBrewery.breweryDescription = breweryDescription
+                        }
+                        
+                        if let breweryImages = brewery["images"] as? [String:String] {
+                            let breweryImagePath = breweryImages["squareMedium"]
+                            newBrewery.imagePath = breweryImagePath!
+                        }
+                        print(newBrewery.name)
+                        self.fetchedBrewery.append(newBrewery)
                     }
                 }
-            } catch {
-                print(error)
+            self.breweryTableView.reloadData()
+            self.breweryPageNumber += 1
             }
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.breweryTableView.reloadData()
-            })
-        self.breweryPageNumber += 1
         }
-    }.resume()
-}
-    
+    }
+
     override func tableView(_ tableView: UITableView,  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = breweryTableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
         let text: String!

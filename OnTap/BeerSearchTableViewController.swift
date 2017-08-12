@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BeerSearchTableViewController: UITableViewController {
 
@@ -21,7 +22,6 @@ class BeerSearchTableViewController: UITableViewController {
         
         fetchedBeers.removeAll()
         queryBeers()
-        
     }
     
     override func viewDidLoad() {
@@ -47,68 +47,54 @@ class BeerSearchTableViewController: UITableViewController {
     
     
     func queryBeers(page: Int = 1) {
-        guard let url = URL(string: "http://api.brewerydb.com/v2/search?q=\(searchBarTextField.text!)&type=beer&p=\(self.beerPageNumber)&key=6ac28fb2b6b8ea4081184e492e5462d8")
-            else {return }
-
-        print(url)
-        let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let searchedBeers = json["data"] as? [[String: Any]] { //core data
-                            for beer in searchedBeers {
-                                let newBeer = Beer()
-                                if let newBeerId = beer["id"] as? String {
-                                    newBeer.id = newBeerId
-                                }
-                                if let newBeerName = beer["name"] as? String {
-                                    newBeer.name = newBeerName
-                                    print(newBeer.name)
-                                }
-                                if let isOrganic = beer["isOrganic"] as? String {
-                                    newBeer.isOrganic = isOrganic
-                                }
-                                if let beerLabels = beer["labels"] as? [String:Any] { //label data
-                                    if let beerLabel = beerLabels["medium"] as? String {
-                                        newBeer.imagePath = beerLabel
-                                    }
-                                }
-                                if let beerStyle = beer["style"] as? [String:Any] { //style data
-                                    if let beerABV = beerStyle["abvMax"] as? String {
-                                        newBeer.abv = beerABV
-                                    }
-                                    if let beerDescription = beerStyle["description"] as? String {
-                                        newBeer.description = beerDescription
-                                    }
-                                    if let style = beerStyle["shortName"] as? String {
-                                        newBeer.style = style
-                                    }
-                                    if let styleId = beerStyle["id"] as? String {
-                                        newBeer.styleId = styleId
-                                    }
-                                }
-                                self.fetchedBeers.append(newBeer)
+        Alamofire.request("http://api.brewerydb.com/v2/search?q=\(searchBarTextField.text!)&type=beer&p=\(self.beerPageNumber)&key=6ac28fb2b6b8ea4081184e492e5462d8").responseJSON { response in
+            if let json = response.result.value as? [String:Any] {
+                if let guilds = json["data"] as? [[String:Any]] {
+                    if let searchedBeers = json["data"] as? [[String: Any]] { //core data
+                        for beer in searchedBeers {
+                            let newBeer = Beer()
+                            if let newBeerId = beer["id"] as? String {
+                                newBeer.id = newBeerId
                             }
+                            if let newBeerName = beer["name"] as? String {
+                                newBeer.name = newBeerName
+                                print(newBeer.name)
+                            }
+                            if let isOrganic = beer["isOrganic"] as? String {
+                                newBeer.isOrganic = isOrganic
+                            }
+                            if let beerLabels = beer["labels"] as? [String:Any] { //label data
+                                if let beerLabel = beerLabels["medium"] as? String {
+                                    newBeer.imagePath = beerLabel
+                                }
+                            }
+                            if let beerStyle = beer["style"] as? [String:Any] { //style data
+                                if let beerABV = beerStyle["abvMax"] as? String {
+                                    newBeer.abv = beerABV
+                                }
+                                if let beerDescription = beerStyle["description"] as? String {
+                                    newBeer.description = beerDescription
+                                }
+                                if let style = beerStyle["shortName"] as? String {
+                                    newBeer.style = style
+                                }
+                                if let styleId = beerStyle["id"] as? String {
+                                    newBeer.styleId = styleId
+                                }
+                            }
+                        self.fetchedBeers.append(newBeer)
                         }
                     }
-                } catch {
-                    print(error)
                 }
-            }
-            if(self.fetchedBeers.count == 0) {
-                DispatchQueue.main.async(execute: {
+                if(self.fetchedBeers.count == 0) {
                     self.alertUser(title: "No Data", message: "There are no search results for \(self.searchBarTextField.text!)")
-                })
-            }
-            else {
-                DispatchQueue.main.async(execute: {
+                }
+                else {
                     self.beerSearchTableView.reloadData()
                     self.beerPageNumber += 1
-                })
-
+                }
             }
-        }.resume()
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

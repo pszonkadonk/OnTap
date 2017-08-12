@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BeerStyleTableTableViewController: UITableViewController {
 
@@ -19,7 +20,6 @@ class BeerStyleTableTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         fetchBeerStyles()
-        
         super.viewDidLoad()
     }
 
@@ -52,40 +52,25 @@ class BeerStyleTableTableViewController: UITableViewController {
     }
  
     func fetchBeerStyles() {
-        
-        guard let url = URL(string: "http://api.brewerydb.com/v2/styles/?key=6ac28fb2b6b8ea4081184e492e5462d8")
-            else {return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
-            
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let beerStyles = json["data"] as? [[String:Any]] {
-                            for style in beerStyles {
-                                let newStyle = BeerStyle()
-                                if let name = style["name"] as? String {
-                                    newStyle.name = name
-                                }
-                                
-                                if let description = style["description"] as? String {
-                                    newStyle.description = description
-                                }
-                                
-                                self.fetchedBeerStyles.append(newStyle)
-                            }
+        Alamofire.request("http://api.brewerydb.com/v2/styles/?key=6ac28fb2b6b8ea4081184e492e5462d8").responseJSON { response in
+            if let json = response.result.value as? [String:Any] {
+                if let beerStyles = json["data"] as? [[String:Any]] {
+                    for style in beerStyles {
+                        let newStyle = BeerStyle()
+                        if let name = style["name"] as? String {
+                            newStyle.name = name
                         }
+                        
+                        if let description = style["description"] as? String {
+                            newStyle.description = description
+                        }
+                        print(newStyle.name)
+                        self.fetchedBeerStyles.append(newStyle)
                     }
-                } catch {
-                    print(error)
                 }
-                DispatchQueue.main.async(execute: {
-                    self.fetchedBeerStyles = self.fetchedBeerStyles.sorted(by: {$0.name < $1.name})
-                    self.beerStyleTableView.reloadData()
-                })
             }
-        }.resume()
+        self.beerStyleTableView.reloadData()
+        }
     }
 
 

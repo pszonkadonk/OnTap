@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HopListTableViewController: UITableViewController {
 
@@ -19,12 +20,8 @@ class HopListTableViewController: UITableViewController {
         
         hopsTableView.dataSource = self
         hopsTableView.delegate = self
-        DispatchQueue.main.sync(execute: {
-            self.fetchHops()
-        }
+        fetchHops()
         super.viewDidLoad()
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,121 +42,85 @@ class HopListTableViewController: UITableViewController {
     }
     
     func fetchHops(pageNumber: Int=1) {
-        guard let url = URL(string: "http://api.brewerydb.com/v2/hops/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.hopsPageNumber)")
-            else {return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
+        Alamofire.request("http://api.brewerydb.com/v2/hops/?key=6ac28fb2b6b8ea4081184e492e5462d8&p=\(self.hopsPageNumber)").responseJSON { response in
             
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let hopsList = json["data"] as? [[String:Any]] {
-                            for hops in hopsList {
-                                let newHops = Hops()
-                                    if let id = hops["id"] as? Int {
-                                        newHops.id = id
-                                    }
-                                    
-                                    if let name = hops["name"] as? String {
-                                        newHops.name = name
-                                    }
-                                    
-                                    if let description = hops["description"] as? String {
-                                        newHops.description = description
-                                    }
-                                    if let alphaAcidMin = hops["alphaAcidMin"] as? Int {
-                                        newHops.alphaAcidMin = alphaAcidMin
-                                    }
-
-                                    if let betaAcidMin = hops["betaAcidMin"] as? Int {
-                                        newHops.betaAcidMin = betaAcidMin
-                                    }
-                                    
-                                    if let betaAcidMax = hops["betaAcidMax"] as? Int {
-                                        newHops.betaAcidMax = betaAcidMax
-                                    }
-                                    
-                                    if let humuleneMin = hops["humuleneMin"] as? Int {
-                                        newHops.humuleneMin = humuleneMin
-                                    }
-                                    
-                                    if let humuleneMax = hops["humuleneMax"] as? Int {
-                                        newHops.humuleneMax = humuleneMax
-                                    }
-                                    
-                                    if let caryophylleneMin = hops["caryophylleneMin"] as? Int {
-                                        newHops.caryophylleneMin = caryophylleneMin
-                                    }
-                                
-                                    if let caryophylleneMax = hops["caryophylleneMax"] as? Int {
-                                        newHops.caryophylleneMax = caryophylleneMax
-                                    }
-                                    
-                                    if let cohumuloneMin = hops["cohumuloneMin"] as? Int {
-                                        newHops.cohumuloneMin = cohumuloneMin
-                                     }
-                                    
-                                    if let cohumuloneMax = hops["cohumuloneMax"] as? Int {
-                                        newHops.cohumuloneMax = cohumuloneMax
-                                    }
-                                    
-                                    if let myrceneMin = hops["myrceneMin"] as? Int {
-                                        newHops.myrceneMin = myrceneMin
-                                    }
-                                    
-                                    if let myrceneMax = hops["myrceneMax"] as? Int {
-                                        newHops.myrceneMax = myrceneMax
-                                    }
-                                    
-                                    if let farneseneMin = hops["farneseneMin"] as? Int {
-                                        newHops.farneseneMin = farneseneMin
-                                    }
-                                    
-                                    if let farneseneMax = hops["farneseneMax"] as? Int {
-                                        newHops.farneseneMax = farneseneMax
-                                    }
-                                    print(newHops.name)
-                                    self.fetchedHops.append(newHops)
-                                }
-                            }
+            if let json = response.result.value as? [String:Any] {
+                if let hopsList = json["data"] as? [[String:Any]] {
+                    for hops in hopsList {
+                        let newHops = Hops()
+                        if let id = hops["id"] as? Int {
+                            newHops.id = id
                         }
-                } catch {
-                    print(error)
-                }
-            }
-//            DispatchQueue.main.async(execute: {
-                self.hopsTableView.reloadData()
-                self.hopsPageNumber += 1
-//            })
-        }.resume()
-    }
-
-    
-    func getHopsPages() -> Int {
-        var pageNum = 0
-        guard let url = URL(string: "http://api.brewerydb.com/v2/hops/?key=6ac28fb2b6b8ea4081184e492e5462d8")
-            else {return 0}
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) {(data, response, error) in
-            
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                        if let pages = json["numberOfPages"] as? Int {
-                            pageNum = json["numberOfPages"] as! Int
+                        
+                        if let name = hops["name"] as? String {
+                            newHops.name = name
                         }
+                        
+                        if let description = hops["description"] as? String {
+                            newHops.description = description
+                        }
+                        if let alphaAcidMin = hops["alphaAcidMin"] as? Int {
+                            newHops.alphaAcidMin = alphaAcidMin
+                        }
+                        
+                        if let betaAcidMin = hops["betaAcidMin"] as? Int {
+                            newHops.betaAcidMin = betaAcidMin
+                        }
+                        
+                        if let betaAcidMax = hops["betaAcidMax"] as? Int {
+                            newHops.betaAcidMax = betaAcidMax
+                        }
+                        
+                        if let humuleneMin = hops["humuleneMin"] as? Int {
+                            newHops.humuleneMin = humuleneMin
+                        }
+                        
+                        if let humuleneMax = hops["humuleneMax"] as? Int {
+                            newHops.humuleneMax = humuleneMax
+                        }
+                        
+                        if let caryophylleneMin = hops["caryophylleneMin"] as? Int {
+                            newHops.caryophylleneMin = caryophylleneMin
+                        }
+                        
+                        if let caryophylleneMax = hops["caryophylleneMax"] as? Int {
+                            newHops.caryophylleneMax = caryophylleneMax
+                        }
+                        
+                        if let cohumuloneMin = hops["cohumuloneMin"] as? Int {
+                            newHops.cohumuloneMin = cohumuloneMin
+                        }
+                        
+                        if let cohumuloneMax = hops["cohumuloneMax"] as? Int {
+                            newHops.cohumuloneMax = cohumuloneMax
+                        }
+                        
+                        if let myrceneMin = hops["myrceneMin"] as? Int {
+                            newHops.myrceneMin = myrceneMin
+                        }
+                        
+                        if let myrceneMax = hops["myrceneMax"] as? Int {
+                            newHops.myrceneMax = myrceneMax
+                        }
+                        
+                        if let farneseneMin = hops["farneseneMin"] as? Int {
+                            newHops.farneseneMin = farneseneMin
+                        }
+                        
+                        if let farneseneMax = hops["farneseneMax"] as? Int {
+                            newHops.farneseneMax = farneseneMax
+                        }
+                        print(newHops.name)
+                        self.fetchedHops.append(newHops)
                     }
-                } catch {
-                    print(error)
+                    
                 }
             }
-        }.resume()
-    return pageNum
+            self.hopsTableView.reloadData()
+            self.hopsPageNumber+=1
+        }
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = hopsTableView.dequeueReusableCell(withIdentifier: "hopsCell", for: indexPath)
         let text: String!
