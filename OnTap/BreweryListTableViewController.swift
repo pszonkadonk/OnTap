@@ -19,16 +19,9 @@ class BreweryListTableViewController: UITableViewController {
     
 
     override func viewDidLoad() {
-        
-        
         breweryTableView.dataSource = self
         breweryTableView.delegate = self
-        
         self.fetchBreweries()
-
-        
-        breweryTableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
-        breweryTableView.separatorColor = UIColor .darkGray
         super.viewDidLoad()
     }
     
@@ -90,6 +83,7 @@ class BreweryListTableViewController: UITableViewController {
                                 let breweryImagePath = breweryImages["squareMedium"]
                                 newBrewery.imagePath = breweryImagePath!
                             }
+                            print(newBrewery.name)
                             self.fetchedBrewery.append(newBrewery)
                         }
                     }

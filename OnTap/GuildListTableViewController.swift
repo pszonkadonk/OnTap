@@ -97,8 +97,11 @@ class GuildListTableViewController: UITableViewController {
                 } catch {
                     print(error)
                 }
-                self.guildListTableView.reloadData()
-                self.guildPageNumber += 1
+                DispatchQueue.main.async(execute: {
+                    self.guildListTableView.reloadData()
+                    self.guildPageNumber += 1
+                })
+
             }
             }.resume()
     }

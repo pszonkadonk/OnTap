@@ -101,8 +101,13 @@ class BeerSearchTableViewController: UITableViewController {
                     self.alertUser(title: "No Data", message: "There are no search results for \(self.searchBarTextField.text!)")
                 })
             }
-        self.beerSearchTableView.reloadData()
-        self.beerPageNumber += 1
+            else {
+                DispatchQueue.main.async(execute: {
+                    self.beerSearchTableView.reloadData()
+                    self.beerPageNumber += 1
+                })
+
+            }
         }.resume()
     }
 

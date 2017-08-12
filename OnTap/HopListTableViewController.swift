@@ -15,15 +15,15 @@ class HopListTableViewController: UITableViewController {
     var hopsPageNumber: Int = 1
     
     
-    
     override func viewDidLoad() {
         
         hopsTableView.dataSource = self
         hopsTableView.delegate = self
-//        hopsPages = getHopsPages()
-//        print(hopsPages)
-        fetchHops()
+        DispatchQueue.main.sync(execute: {
+            self.fetchHops()
+        }
         super.viewDidLoad()
+
 
     }
 
@@ -119,7 +119,7 @@ class HopListTableViewController: UITableViewController {
                                     if let farneseneMax = hops["farneseneMax"] as? Int {
                                         newHops.farneseneMax = farneseneMax
                                     }
-                                
+                                    print(newHops.name)
                                     self.fetchedHops.append(newHops)
                                 }
                             }
@@ -128,8 +128,10 @@ class HopListTableViewController: UITableViewController {
                     print(error)
                 }
             }
-        self.hopsTableView.reloadData()
-        self.hopsPageNumber += 1
+//            DispatchQueue.main.async(execute: {
+                self.hopsTableView.reloadData()
+                self.hopsPageNumber += 1
+//            })
         }.resume()
     }
 

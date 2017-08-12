@@ -80,8 +80,10 @@ class BeerStyleTableTableViewController: UITableViewController {
                 } catch {
                     print(error)
                 }
-                self.fetchedBeerStyles = self.fetchedBeerStyles.sorted(by: {$0.name < $1.name})
-                self.beerStyleTableView.reloadData()
+                DispatchQueue.main.async(execute: {
+                    self.fetchedBeerStyles = self.fetchedBeerStyles.sorted(by: {$0.name < $1.name})
+                    self.beerStyleTableView.reloadData()
+                })
             }
         }.resume()
     }
