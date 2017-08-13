@@ -29,10 +29,20 @@ class HopsDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         
+        hopsDescriptionLabel.textColor = UIColor.flatWhite
+        hopsDescriptionLabel.textAlignment = NSTextAlignment.center
+        
+        self.hopsNameLabel.text = hopsNameLabelText
+        if(hopsDescriptionText == "") {
+            self.hopsDescriptionLabel.text = "Not Description Available"
+        } else {
+            self.hopsDescriptionLabel.text = hopsDescriptionText
+        }
+
+        
+        
         super.viewDidLoad()
 
-        self.hopsNameLabel.text = hopsNameLabelText
-        self.hopsDescriptionLabel.text = hopsDescriptionText        
     }
 
     override func didReceiveMemoryWarning() {

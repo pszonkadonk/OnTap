@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		39AAD612D2A7C157B71A6B79 /* Pods_OnTap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C36B78B550C202F6BD7B5 /* Pods_OnTap.framework */; };
+		7503B9011F3FE2A70061BE3B /* nav-three-bars.png in Resources */ = {isa = PBXBuildFile; fileRef = 7503B9001F3FE2A70061BE3B /* nav-three-bars.png */; };
 		750689E91EFF072E0059C77B /* BreweryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */; };
 		750689EB1EFF079C0059C77B /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750689EA1EFF079C0059C77B /* Brewery.swift */; };
 		75151BD91F15AE67009952CE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75151BD81F15AE67009952CE /* MapKit.framework */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		712C36B78B550C202F6BD7B5 /* Pods_OnTap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnTap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7503B9001F3FE2A70061BE3B /* nav-three-bars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-three-bars.png"; sourceTree = "<group>"; };
 		750689E81EFF072E0059C77B /* BreweryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryDetailViewController.swift; sourceTree = "<group>"; };
 		750689EA1EFF079C0059C77B /* Brewery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 		75151BD81F15AE67009952CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -136,6 +138,7 @@
 		7525C47C1F08359300272689 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				7503B9001F3FE2A70061BE3B /* nav-three-bars.png */,
 				7525C4811F0840EC00272689 /* placeholder.png */,
 			);
 			name = resources;
@@ -318,6 +321,7 @@
 			files = (
 				757811651EF9FF6800D102AB /* LaunchScreen.storyboard in Resources */,
 				7525C4821F0840EC00272689 /* placeholder.png in Resources */,
+				7503B9011F3FE2A70061BE3B /* nav-three-bars.png in Resources */,
 				75E61C131F361A92001660F6 /* GoogleService-Info.plist in Resources */,
 				757811621EF9FF6800D102AB /* Assets.xcassets in Resources */,
 				757811601EF9FF6800D102AB /* Main.storyboard in Resources */,

@@ -31,9 +31,14 @@ class BeerStyleDetailViewController: UIViewController {
         beerStyleNameLabel.text = beerStyleName
         beerStyleNameLabel.textColor = UIColor.flatWhite
         beerStyleNameLabel.textAlignment = NSTextAlignment.center
-        beerStyleDescriptionLabel.text = beerStyleDescription
         beerStyleDescriptionLabel.textColor = UIColor.flatWhite
         beerStyleDescriptionLabel.textAlignment = NSTextAlignment.center
+        
+        if(beerStyleDescription == "") {
+            beerStyleDescriptionLabel.text = "No Description Available"
+        } else {
+            beerStyleDescriptionLabel.text = beerStyleDescription
+        }
 
         
 

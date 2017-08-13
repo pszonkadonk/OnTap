@@ -49,7 +49,12 @@ class BeerDetailViewController: UIViewController {
         self.beerAbvLabel.text = targetBeer.abv
         self.beerStyleLabel.text = targetBeer.style
         self.beerIsOrganicLabel.text = targetBeer.isOrganic
-        self.beerDescriptionLabel.text = targetBeer.description
+        
+        if(targetBeer.description == "") {
+            self.beerDescriptionLabel.text = "No Data Available"
+        } else {
+            self.beerDescriptionLabel.text = targetBeer.description
+        }
         
         favoriteButton.layer.cornerRadius = 5
         favoriteButton.layer.borderWidth = 1

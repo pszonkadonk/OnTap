@@ -59,7 +59,12 @@ class BreweryDetailViewController: UIViewController {
         
         breweryDescriptionLabel.textColor = UIColor.flatWhite
         breweryWebsiteLabel.textColor = UIColor.flatWhite
-        self.breweryDescriptionLabel.text = breweryDescription
+        if(breweryDescription == "") {
+            self.breweryDescriptionLabel.text = "No Description Available"
+        }
+        else {
+            self.breweryDescriptionLabel.text = breweryDescription
+        }
         self.breweryWebsiteLabel.text = breweryWebsite
     
         let breweryImageUrl = URL(string: breweryImagePath)
