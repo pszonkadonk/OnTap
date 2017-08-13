@@ -131,22 +131,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.22400518799999999" green="0.66397807890000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Search for a Beer" textAlignment="natural" minimumFontSize="17" id="lWu-x1-cZS">
+                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" placeholder="Search for a Beer" minimumFontSize="17" id="lWu-x1-cZS">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <attributedString key="attributedText"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <action selector="searchBeer:" destination="VKx-TS-N88" eventType="primaryActionTriggered" id="INc-kC-MFm"/>
                             </connections>
                         </textField>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="beerSearchCell" id="6Qp-rD-cfc">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="beerSearchCell" id="6Qp-rD-cfc">
                                 <rect key="frame" x="0.0" y="73" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Qp-rD-cfc" id="4VL-Rn-q1Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -220,14 +219,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDB-I3-CAr">
-                                <rect key="frame" x="-191" y="64" width="191" height="603"/>
+                                <rect key="frame" x="-300" y="64" width="191" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5j5-00-E34">
                                         <rect key="frame" x="34" y="46" width="120" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Breweries">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="ego-Kf-Mzl" kind="show" id="Ibh-0x-72E"/>
@@ -238,7 +237,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Map">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="SJf-Ri-Yrh" kind="show" identifier="mapSegue" id="QBp-gY-RXe"/>
@@ -251,7 +250,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Find A Beer">
                                                     <attributes>
-                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="NSColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" metaFont="system" size="21"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="charWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
@@ -267,7 +266,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Hops">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="l4f-B3-xaB" kind="show" id="hRX-4J-RKc"/>
@@ -278,7 +277,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Styles">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="hgu-9w-wH6" kind="show" id="xgO-vm-RVn"/>
@@ -291,7 +290,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Beer Guilds">
                                                     <attributes>
-                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="NSColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" metaFont="system" size="21"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
@@ -313,7 +312,7 @@
                         <constraints>
                             <constraint firstItem="rDB-I3-CAr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Db3-qW-Coi"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rDB-I3-CAr" secondAttribute="bottom" id="f7i-3S-Cts"/>
-                            <constraint firstItem="rDB-I3-CAr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-191" id="gsd-Dr-vCa"/>
+                            <constraint firstItem="rDB-I3-CAr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-300" id="gsd-Dr-vCa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MainMenu" id="ahg-UM-DOq">
@@ -328,6 +327,8 @@
                         <outlet property="favoriteBreweryButton" destination="Cfe-ah-6OY" id="w4m-r5-ve4"/>
                         <outlet property="leadingConstraint" destination="gsd-Dr-vCa" id="SX3-mf-sX5"/>
                         <outlet property="logoutButton" destination="7bk-QL-uvG" id="uef-f3-TKU"/>
+                        <outlet property="onTapLabel" destination="gip-Af-mmQ" id="9Wy-vq-xZK"/>
+                        <outlet property="sideMenu" destination="rDB-I3-CAr" id="JH8-g3-HhU"/>
                         <segue destination="ofv-rg-wM9" kind="show" identifier="backToAuthSegue" id="13P-2I-ZlN"/>
                     </connections>
                 </viewController>

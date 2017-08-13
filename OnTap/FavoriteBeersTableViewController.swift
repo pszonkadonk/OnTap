@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-
+import ChameleonFramework
 
 class FavoriteBeersTableViewController: UITableViewController {
     
@@ -53,20 +53,7 @@ class FavoriteBeersTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor.flatOrange
-        cell?.backgroundColor = UIColor.flatOrange
-        cell?.accessoryView?.backgroundColor = UIColor.flatOrange
-    }
     
-    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor.flatSkyBlue
-        cell?.backgroundColor = UIColor.flatSkyBlue
-        cell?.accessoryView?.backgroundColor = UIColor.flatSkyBlue
-    }
-
     
     func fetchFavoriteBeers() {
         dbRef = Database.database().reference()

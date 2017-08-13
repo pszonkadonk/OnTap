@@ -17,6 +17,16 @@ class MainMenu: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var favoriteBreweryButton: UIButton!
     @IBOutlet weak var favoriteBeerButton: UIButton!
+    @IBOutlet weak var onTapLabel: UILabel!
+    @IBOutlet weak var sideMenu: UIView!
+    
+    let strokeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName: UIColor.flatOrange,
+        NSStrokeWidthAttributeName : -3.0,
+        NSFontAttributeName : UIFont.boldSystemFont(ofSize: 47)
+        ] as [String : Any]
+
     @IBAction func action(_ sender: UIButton) {
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "backToAuthSegue", sender: self )
@@ -27,17 +37,16 @@ class MainMenu: UIViewController {
     
     override func viewDidLoad() {
         
+        sideMenu.backgroundColor = UIColor.flatBlue
+        sideMenu.alpha = 0.95
         logoutButton.layer.cornerRadius = 5
         logoutButton.layer.borderWidth = 1
         favoriteBreweryButton.layer.cornerRadius = 5
         favoriteBreweryButton.layer.borderWidth = 1
         favoriteBeerButton.layer.cornerRadius = 5
         favoriteBeerButton.layer.borderWidth = 1
-
         
-        
-        
-        
+        onTapLabel.attributedText = NSMutableAttributedString(string: "OnTap!", attributes: strokeTextAttributes)
         
         super.viewDidLoad()
         
@@ -51,7 +60,10 @@ class MainMenu: UIViewController {
     @IBAction func openMenu(_ sender: Any) {
         
         if(menuShowing) {
-            leadingConstraint.constant = -161
+            leadingConstraint.constant = -200
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
             menuShowing = false
         } else {
             leadingConstraint.constant = 0

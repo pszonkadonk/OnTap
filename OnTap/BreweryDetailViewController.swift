@@ -26,6 +26,13 @@ class BreweryDetailViewController: UIViewController {
     var breweryDescription: String = ""
     var breweryImagePath: String = ""
     
+    let strokeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName: UIColor.flatOrange,
+        NSStrokeWidthAttributeName : -3.0,
+        NSFontAttributeName : UIFont.boldSystemFont(ofSize: 47)
+        ] as [String : Any]
+
     
     var dbRef: DatabaseReference!    
     var currentUser = Auth.auth().currentUser!

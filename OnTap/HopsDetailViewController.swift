@@ -19,6 +19,14 @@ class HopsDetailViewController: UIViewController, UITableViewDataSource, UITable
     var hopsDescriptionText: String = ""
     var hopsAttributes = [[String:Int]]()
     
+    let strokeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName: UIColor.flatOrange,
+        NSStrokeWidthAttributeName : -3.0,
+        NSFontAttributeName : UIFont.boldSystemFont(ofSize: 47)
+        ] as [String : Any]
+
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

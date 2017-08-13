@@ -105,7 +105,7 @@ class UserAuthenticationViewController: UIViewController {
         segmentControl.layer.borderWidth = 1.0
         segmentControl.layer.borderColor = UIColor.black.cgColor
         
-        ontapHeaderLabel.attributedText = NSMutableAttributedString(string: "Welcome to OnTap!", attributes: strokeTextAttributes)
+        ontapHeaderLabel.attributedText = NSMutableAttributedString(string: "Welcome To OnTap!", attributes: strokeTextAttributes)
 
         
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import ChameleonFramework
 
 class BeerSearchTableViewController: UITableViewController {
 
@@ -25,6 +26,10 @@ class BeerSearchTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        
+        searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search for a beer", attributes: [NSForegroundColorAttributeName: UIColor.flatWhite])
+        searchBarTextField.textColor = UIColor.flatWhite
+
         super.viewDidLoad()
     }
 
@@ -44,6 +49,8 @@ class BeerSearchTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return fetchedBeers.count
     }
+    
+    
     
     
     func queryBeers(page: Int = 1) {
@@ -103,9 +110,26 @@ class BeerSearchTableViewController: UITableViewController {
         let text: String!
         text = fetchedBeers[indexPath.row].name
         cell.textLabel?.text = text
+        cell.backgroundColor = UIColor.flatSkyBlue
+        cell.textLabel?.textColor = UIColor.white
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatOrange
+        cell?.backgroundColor = UIColor.flatOrange
+        cell?.accessoryView?.backgroundColor = UIColor.flatOrange
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.flatSkyBlue
+        cell?.backgroundColor = UIColor.flatSkyBlue
+        cell?.accessoryView?.backgroundColor = UIColor.flatSkyBlue
+    }
+    
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         var isLoadingNewData: Bool = false

@@ -13,6 +13,13 @@ class BeerStyleDetailViewController: UIViewController {
     
     @IBOutlet weak var beerStyleNameLabel: UILabel!
     @IBOutlet weak var beerStyleDescriptionLabel: UILabel!
+    let strokeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName: UIColor.flatOrange,
+        NSStrokeWidthAttributeName : -3.0,
+        NSFontAttributeName : UIFont.boldSystemFont(ofSize: 47)
+        ] as [String : Any]
+
     
     var beerStyleName: String = ""
     var beerStyleDescription: String = ""

@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import ChameleonFramework
 
 class FavoriteBreweryTableViewController: UITableViewController {
     

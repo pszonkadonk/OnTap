@@ -22,6 +22,15 @@ class GuildDetailViewController: UIViewController {
     var guildDescription: String = ""
     var guildImagePath: String = ""
 
+    let strokeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName: UIColor.flatOrange,
+        NSStrokeWidthAttributeName : -3.0,
+        NSFontAttributeName : UIFont.boldSystemFont(ofSize: 47)
+        ] as [String : Any]
+
+    
+    
     override func viewDidLoad() {
         
         guildNameLabel.textColor = UIColor.flatWhite

@@ -24,6 +24,13 @@ class BeerDetailViewController: UIViewController {
     var dbRef: DatabaseReference!
     var currentUser = Auth.auth().currentUser!
 
+    let strokeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName: UIColor.flatOrange,
+        NSStrokeWidthAttributeName : -3.0,
+        NSFontAttributeName : UIFont.boldSystemFont(ofSize: 47)
+        ] as [String : Any]
+
     
     @IBAction func favoriteButton(_ sender: Any) {
         dbRef = Database.database().reference()
@@ -50,10 +57,12 @@ class BeerDetailViewController: UIViewController {
         beerImageView.layer.borderWidth = 1.0
         beerImageView.layer.borderColor = UIColor.black.cgColor
         
+        beerNameLabel.textColor = UIColor.flatWhite
         beerAbvLabel.textColor = UIColor.flatWhite
         beerStyleLabel.textColor = UIColor.flatWhite
         beerIsOrganicLabel.textColor = UIColor.flatWhite
-        
+
+        beerNameLabel.textAlignment = NSTextAlignment.center
         beerAbvLabel.textAlignment = NSTextAlignment.center
         beerStyleLabel.textAlignment = NSTextAlignment.center
         beerIsOrganicLabel.textAlignment = NSTextAlignment.center
